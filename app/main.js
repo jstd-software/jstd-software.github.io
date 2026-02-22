@@ -206,10 +206,11 @@ qsa('.cracked-word').forEach(el => {
     const DPR = 1.5;
 
     function scaleCanvas(c) {
-        const lw = c.width, lh = c.height;
-        c.style.width  = lw + 'px';
+        const lw = c.width,
+            lh = c.height;
+        c.style.width = lw + 'px';
         c.style.height = lh + 'px';
-        c.width  = Math.round(lw * DPR);
+        c.width = Math.round(lw * DPR);
         c.height = Math.round(lh * DPR);
         return { lw, lh };
     }
