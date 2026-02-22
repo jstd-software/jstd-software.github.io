@@ -203,8 +203,22 @@ qsa('.cracked-word').forEach(el => {
     const c2 = qs('#nnCanvas2');
     if (!c1 || !c2) return;
 
+    const DPR = 1.5;
+
+    function scaleCanvas(c) {
+        const lw = c.width, lh = c.height;
+        c.style.width  = lw + 'px';
+        c.style.height = lh + 'px';
+        c.width  = Math.round(lw * DPR);
+        c.height = Math.round(lh * DPR);
+        return { lw, lh };
+    }
+
+    const s1 = scaleCanvas(c1);
+    const s2 = scaleCanvas(c2);
+
     // Canvas 1: Input (visual subset, 8 nodes) → Hidden (8 nodes)
-    drawNNLayer(c1, {
+    drawNNLayer(c1, s1.lw, s1.lh, {
         left: { n: 8, color: '#00d4ff', label: '50' },
         right: { n: 8, color: '#a78bfa', label: '30' },
         connColor: 'rgba(0,212,255,0.06)',
@@ -212,17 +226,17 @@ qsa('.cracked-word').forEach(el => {
     });
 
     // Canvas 2: Hidden (6 nodes) → Output (1 node)
-    drawNNLayer(c2, {
+    drawNNLayer(c2, s2.lw, s2.lh, {
         left: { n: 6, color: '#a78bfa', label: '30' },
         right: { n: 1, color: '#00ff88', label: '1' },
         connColor: 'rgba(167,139,250,0.1)',
         activeConn: 'rgba(0,255,136,0.6)',
     });
 
-    function drawNNLayer(canvas, { left, right, connColor, activeConn }) {
+    function drawNNLayer(canvas, logW, logH, { left, right, connColor, activeConn }) {
         const ctx = canvas.getContext('2d');
-        const W = canvas.width,
-            H = canvas.height;
+        const W = logW,
+            H = logH;
         const pad = 32;
 
         const leftX = pad + 8;
@@ -267,10 +281,13 @@ qsa('.cracked-word').forEach(el => {
         }
 
         function frame() {
-            ctx.clearRect(0, 0, W, H);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.save();
+            ctx.scale(DPR, DPR);
             drawConnections(true);
             drawNodes(leftX, left.n, left.color);
             drawNodes(rightX, right.n, right.color);
+            ctx.restore();
             raf(frame);
         }
 

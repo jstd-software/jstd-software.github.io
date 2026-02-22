@@ -840,6 +840,12 @@ html.lang-loading {
     margin-bottom: 24px;
 }
 
+@media (max-width: 768px) {
+    .nn-diagram {
+        display: none;
+    }
+}
+
 .nn-col {
     display: flex;
     flex-direction: column;
