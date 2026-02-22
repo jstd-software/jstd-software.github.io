@@ -203,7 +203,7 @@
             /* CTA */
             'cta.label': 'Security starts here',
             'cta.title_html': 'Every JS file is<br /> a potential<br /> <span class="cracked-word cracked-word--lg" data-text="hole">hole</span>',
-            'cta.p': 'JSTD.AI runs completely offline on Windows. No internet required. No GPU needed. Installation takes a minute — your first analysis will be done within three.',
+            'cta.p': 'JSTD.AI runs completely offline on Windows. No internet required. No GPU needed. Installation takes a minute — your first analysis will be done within three...',
             'cta.btn_primary': 'Download JSTD.AI',
             'cta.btn_ghost': 'Documentation',
             'cta.spec3': '<1 MB executable file',
