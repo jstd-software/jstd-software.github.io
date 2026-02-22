@@ -30,8 +30,14 @@ const raf = requestAnimationFrame;
     ];
 
     function resize() {
-        W = canvas.width = window.innerWidth;
-        H = canvas.height = window.innerHeight;
+        const DPR = window.devicePixelRatio || 1;
+        W = window.innerWidth;
+        H = window.innerHeight;
+        canvas.style.width = W + 'px';
+        canvas.style.height = H + 'px';
+        canvas.width = Math.round(W * DPR);
+        canvas.height = Math.round(H * DPR);
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     }
 
     function createStar() {
@@ -120,7 +126,10 @@ const raf = requestAnimationFrame;
     let resizeTimer;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => { resize(); cacheGradients(); }, 150);
+        resizeTimer = setTimeout(() => {
+            resize();
+            cacheGradients();
+        }, 150);
     });
     document.addEventListener('visibilitychange', () => {
         if (!document.hidden) raf(draw);
@@ -213,8 +222,9 @@ qsa('.cracked-word').forEach(el => {
     const c2 = qs('#nnCanvas2');
     if (!c1 || !c2) return;
 
-    const DPR = 1.5;
+    const DPR = Math.min((window.devicePixelRatio || 1) * 4, 8);
 
+    /* Scale a canvas to physical pixels, keep CSS size unchanged */
     function scaleCanvas(c) {
         const lw = c.width,
             lh = c.height;
@@ -225,90 +235,119 @@ qsa('.cracked-word').forEach(el => {
         return { lw, lh };
     }
 
-    const s1 = scaleCanvas(c1);
-    const s2 = scaleCanvas(c2);
+    const LAYERS = [{
+            canvas: c1,
+            ...scaleCanvas(c1),
+            left: { n: 8, color: '#00d4ff' },
+            right: { n: 8, color: '#a78bfa' },
+            connColor: 'rgba(0,212,255,0.06)',
+            activeConn: 'rgba(0,212,255,0.35)',
+        },
+        {
+            canvas: c2,
+            ...scaleCanvas(c2),
+            left: { n: 6, color: '#a78bfa' },
+            right: { n: 1, color: '#00ff88' },
+            connColor: 'rgba(167,139,250,0.1)',
+            activeConn: 'rgba(0,255,136,0.6)',
+        },
+    ];
 
-    // Canvas 1: Input (visual subset, 8 nodes) → Hidden (8 nodes)
-    drawNNLayer(c1, s1.lw, s1.lh, {
-        left: { n: 8, color: '#00d4ff', label: '50' },
-        right: { n: 8, color: '#a78bfa', label: '30' },
-        connColor: 'rgba(0,212,255,0.06)',
-        activeConn: 'rgba(0,212,255,0.35)',
+    /* Pre-compute node y-positions so they aren't recalculated every frame */
+    const PAD = 32;
+    const NODE_R = 6;
+
+    function buildPositions(n, H) {
+        const spacing = (H - PAD * 2) / (n + 1);
+        return Array.from({ length: n }, (_, i) => PAD + spacing * (i + 1));
+    }
+
+    LAYERS.forEach(L => {
+        L.leftX = PAD + NODE_R + 2;
+        L.rightX = L.lw - PAD - NODE_R - 2;
+        L.leftY = buildPositions(L.left.n, L.lh);
+        L.rightY = buildPositions(L.right.n, L.lh);
     });
 
-    // Canvas 2: Hidden (6 nodes) → Output (1 node)
-    drawNNLayer(c2, s2.lw, s2.lh, {
-        left: { n: 6, color: '#a78bfa', label: '30' },
-        right: { n: 1, color: '#00ff88', label: '1' },
-        connColor: 'rgba(167,139,250,0.1)',
-        activeConn: 'rgba(0,255,136,0.6)',
-    });
-
-    function drawNNLayer(canvas, logW, logH, { left, right, connColor, activeConn }) {
+    /* Draw one layer for a given animation tick */
+    function drawLayer(L, tick) {
+        const {
+            canvas,
+            lw,
+            lh,
+            left,
+            right,
+            connColor,
+            activeConn,
+            leftX,
+            rightX,
+            leftY,
+            rightY
+        } = L;
         const ctx = canvas.getContext('2d');
-        const W = logW,
-            H = logH;
-        const pad = 32;
 
-        const leftX = pad + 8;
-        const rightX = W - pad - 8;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        ctx.scale(DPR, DPR);
 
-        function yPos(i, n) {
-            const spacing = (H - pad * 2) / (n + 1);
-            return pad + spacing * (i + 1);
-        }
-
-        function drawNodes(x, n, color) {
-            for (let i = 0; i < n; i++) {
-                const y = yPos(i, n);
-                ctx.beginPath();
-                ctx.arc(x, y, 6, 0, Math.PI * 2);
-                ctx.fillStyle = color + '22';
-                ctx.strokeStyle = color;
-                ctx.lineWidth = 1.2;
-                ctx.fill();
-                ctx.stroke();
-            }
-        }
-
-        function drawConnections(animated) {
-            for (let i = 0; i < left.n; i++) {
-                for (let j = 0; j < right.n; j++) {
-                    const x1 = leftX + 6;
-                    const y1 = yPos(i, left.n);
-                    const x2 = rightX - 6;
-                    const y2 = yPos(j, right.n);
-
-                    const isActive = animated && (i + j) % 3 === (Math.floor(Date.now() / 400) % 3);
-
-                    ctx.beginPath();
-                    ctx.moveTo(x1, y1);
-                    ctx.lineTo(x2, y2);
-                    ctx.strokeStyle = isActive ? activeConn : connColor;
-                    ctx.lineWidth = isActive ? 1.2 : 0.8;
-                    ctx.stroke();
+        /* — connections, batched by style to minimise state changes — */
+        ctx.lineWidth = 0.8;
+        ctx.strokeStyle = connColor;
+        ctx.beginPath();
+        for (let i = 0; i < left.n; i++) {
+            for (let j = 0; j < right.n; j++) {
+                if ((i + j) % 3 !== tick) {
+                    ctx.moveTo(leftX + NODE_R, leftY[i]);
+                    ctx.lineTo(rightX - NODE_R, rightY[j]);
                 }
             }
         }
+        ctx.stroke();
 
-        function frame() {
-            if (document.hidden) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.save();
-            ctx.scale(DPR, DPR);
-            drawConnections(true);
-            drawNodes(leftX, left.n, left.color);
-            drawNodes(rightX, right.n, right.color);
-            ctx.restore();
-            raf(frame);
+        ctx.lineWidth = 1.2;
+        ctx.strokeStyle = activeConn;
+        ctx.beginPath();
+        for (let i = 0; i < left.n; i++) {
+            for (let j = 0; j < right.n; j++) {
+                if ((i + j) % 3 === tick) {
+                    ctx.moveTo(leftX + NODE_R, leftY[i]);
+                    ctx.lineTo(rightX - NODE_R, rightY[j]);
+                }
+            }
         }
+        ctx.stroke();
 
-        document.addEventListener('visibilitychange', () => {
-            if (!document.hidden) raf(frame);
-        });
+        /* — nodes — */
+        function drawNodes(xs, ys, color) {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1.2;
+            ys.forEach(y => {
+                ctx.beginPath();
+                ctx.arc(xs, y, NODE_R, 0, Math.PI * 2);
+                ctx.fillStyle = color + '22';
+                ctx.fill();
+                ctx.stroke();
+            });
+        }
+        drawNodes(leftX, leftY, left.color);
+        drawNodes(rightX, rightY, right.color);
 
-        frame();
+        ctx.restore();
     }
+
+    /* Shared animation loop for both canvases */
+    function frame() {
+        if (document.hidden) return;
+        const tick = Math.floor(Date.now() / 400) % 3;
+        LAYERS.forEach(L => drawLayer(L, tick));
+        raf(frame);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) raf(frame);
+    });
+
+    frame();
 })();
 
 

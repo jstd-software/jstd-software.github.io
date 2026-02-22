@@ -58,6 +58,15 @@ body {
     background: var(--border);
 }
 
+
+/* ── TEXT SELECTION ──────────────────────────── */
+
+::selection {
+    background: rgba(0, 212, 255, 0.18);
+    color: #fff;
+    text-shadow: 0 0 4px rgba(0, 212, 255, 1), 0 0 12px rgba(0, 212, 255, 0.7), 0 0 28px rgba(0, 212, 255, 0.35);
+}
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--cyan);
 }
@@ -220,15 +229,20 @@ body {
     user-select: none;
 }
 
-
 .cursor {
     animation: cur-blink .8s step-end infinite;
 }
 
 @keyframes cur-blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
+
 
 /* ── FOUC prevention ─────────────────────────── */
 
@@ -496,7 +510,7 @@ html.lang-loading {
 
 .threat-card {
     background: var(--bg-card);
-    border: 1px solid rgba(255, 51, 102, .3);
+    border: 2px solid rgba(255, 51, 102, .3);
     padding: 24px;
     width: 100%;
     max-width: 460px;
