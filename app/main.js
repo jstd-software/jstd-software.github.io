@@ -457,6 +457,10 @@ qsa('.cracked-word').forEach(el => {
         startAuto();
     });
 
+    // pause autoplay while cursor is over any tcard
+    track.addEventListener('mouseenter', stopAuto);
+    track.addEventListener('mouseleave', startAuto);
+
     // swipe
     let startX = 0;
     track.addEventListener('pointerdown', e => { startX = e.clientX; });
