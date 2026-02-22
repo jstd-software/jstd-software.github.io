@@ -135,30 +135,30 @@
             <div class="threat-card" id="heroThreatCard">
                 <div class="threat-card__header">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <path d="M9 1L1 5V10C1 13.866 4.686 17 9 17C13.314 17 17 13.866 17 10V5L9 1Z" stroke="#ff3366"
+                        <path d="M9 1L1 5V10C1 13.866 4.686 17 9 17C13.314 17 17 13.866 17 10V5L9 1Z" stroke="currentColor"
                             stroke-width="1.3" />
-                        <path d="M9 6V10M9 12.5V13" stroke="#ff3366" stroke-width="1.5" stroke-linecap="square" />
+                        <path d="M9 6V10M9 12.5V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
                     </svg>
-                    <span>CRITICAL THREAT</span>
-                    <span class="threat-card__score">93.46%</span>
+                    <span id="heroThreatLabel">SAFE</span>
+                    <span class="threat-card__score" id="heroScore">0.00%</span>
                 </div>
                 <div class="threat-card__code" id="heroCode"></div>
                 <div class="threat-card__rules">
-                    <div class="rule-item rule-item--high" style="--delay:0s">
-                        <span class="rule-dot"></span>Cookie stealing pattern<span class="rule-pct">93%</span>
+                    <div class="rule-item rule-item--high" id="heroRule0">
+                        <span class="rule-dot"></span>DOM prototype hijack<span class="rule-pct" id="heroRulePct0">0%</span>
                     </div>
-                    <div class="rule-item rule-item--high" style="--delay:.12s">
-                        <span class="rule-dot"></span>Base64 with eval<span class="rule-pct">92%</span>
+                    <div class="rule-item rule-item--high" id="heroRule1">
+                        <span class="rule-dot"></span>C2 data exfiltration<span class="rule-pct" id="heroRulePct1">0%</span>
                     </div>
-                    <div class="rule-item rule-item--med" style="--delay:.24s">
-                        <span class="rule-dot"></span>Prototype pollution<span class="rule-pct">91%</span>
+                    <div class="rule-item rule-item--high" id="heroRule2">
+                        <span class="rule-dot"></span>Keystroke logging<span class="rule-pct" id="heroRulePct2">0%</span>
                     </div>
-                    <div class="rule-item rule-item--med" style="--delay:.36s">
-                        <span class="rule-dot"></span>Remote script injection<span class="rule-pct">88%</span>
+                    <div class="rule-item rule-item--med" id="heroRule3">
+                        <span class="rule-dot"></span>Supply chain injection<span class="rule-pct" id="heroRulePct3">0%</span>
                     </div>
                 </div>
                 <div class="threat-card__bar">
-                    <div class="threat-card__bar-fill" style="width:93.46%"></div>
+                    <div class="threat-card__bar-fill" id="heroBarFill" style="width:0%"></div>
                 </div>
             </div>
         </div>

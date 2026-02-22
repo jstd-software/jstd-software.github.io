@@ -14,7 +14,7 @@
 :root {
     --bg: #060911;
     --bg-2: #0c1022;
-    --bg-card: #0e1529;
+    --bg-card: rgba(14, 21, 41, 0.52);
     --border: rgba(0, 212, 255, 0.14);
     --border-2: rgba(255, 255, 255, 0.06);
     --cyan: #00d4ff;
@@ -29,6 +29,8 @@
     --font: 'Space Grotesk', sans-serif;
     --mono: 'Space Mono', monospace;
     --trans: .22s cubic-bezier(.4, 0, .2, 1);
+    /* Frosted noise — feTurbulence SVG as bg layer */
+    --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
 }
 
 html {
@@ -41,6 +43,22 @@ body {
     color: var(--text);
     line-height: 1.65;
     overflow-x: hidden;
+}
+
+/* ── FROSTED GLASS — applied site-wide to all card-like surfaces ──────── */
+.threat-card,
+.pipeline__step,
+.algo-card,
+.tcard,
+.docs-card,
+.showcase-item,
+.docs-qs-step {
+    backdrop-filter: blur(14px) saturate(1.25);
+    -webkit-backdrop-filter: blur(14px) saturate(1.25);
+    background-image: var(--noise) !important;
+    background-color: var(--bg-card) !important;
+    background-blend-mode: overlay, normal;
+    isolation: isolate;
 }
 
 
@@ -102,8 +120,11 @@ body {
     right: 0;
     z-index: 100;
     border-bottom: 1px solid var(--border);
-    background: rgba(6, 9, 17, 0.82);
-    backdrop-filter: blur(14px);
+    background-color: rgba(6, 9, 17, 0.72);
+    background-image: var(--noise);
+    background-blend-mode: overlay;
+    backdrop-filter: blur(18px) saturate(1.3);
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
 }
 
 .nav__inner {
@@ -509,13 +530,13 @@ html.lang-loading {
 }
 
 .threat-card {
-    background: var(--bg-card);
-    border: 2px solid rgba(255, 51, 102, .3);
+    border: 2px solid rgba(0, 255, 136, .25);
     padding: 24px;
     width: 100%;
     max-width: 460px;
-    box-shadow: 0 0 48px rgba(255, 51, 102, .08), 0 0 0 1px rgba(255, 51, 102, .1) inset;
+    box-shadow: 0 0 40px rgba(0, 255, 136, .06), 0 0 0 1px rgba(0, 255, 136, .08) inset;
     animation: cardFloat 5s ease-in-out infinite;
+    transition: border-color 1.6s ease, box-shadow 1.6s ease;
 }
 
 @keyframes cardFloat {
@@ -535,16 +556,18 @@ html.lang-loading {
     margin-bottom: 16px;
     font-family: var(--mono);
     font-size: 13px;
-    color: var(--red);
+    color: #4ade80;
     text-transform: uppercase;
     letter-spacing: .8px;
+    transition: color 1.6s ease;
 }
 
 .threat-card__score {
     margin-left: auto;
     font-size: 18px;
     font-weight: 700;
-    color: var(--red);
+    color: #4ade80;
+    transition: color 1.6s ease;
 }
 
 .threat-card__code {
@@ -555,15 +578,16 @@ html.lang-loading {
     background: rgba(0, 0, 0, .3);
     padding: 16px;
     margin-bottom: 16px;
-    min-height: 80px;
-    border-left: 2px solid rgba(255, 51, 102, .3);
+    height: 290px;
+    border-left: 2px solid rgba(74, 222, 128, .25);
     overflow: hidden;
+    white-space: pre-wrap;
+    transition: border-left-color 1.6s ease;
 }
 
 .threat-card__rules {
     display: flex;
     flex-direction: column;
-    gap: 8px;
     margin-bottom: 16px;
 }
 
@@ -574,13 +598,26 @@ html.lang-loading {
     font-size: 13px;
     color: var(--text-2);
     opacity: 0;
-    animation: ruleIn .4s var(--delay, 0s) forwards;
+    max-height: 0;
+    overflow: hidden;
+    margin-bottom: 0;
+    transition: max-height .45s cubic-bezier(0, 1, .4, 1),
+                opacity    .45s ease,
+                margin-bottom .45s ease;
 }
 
-@keyframes ruleIn {
-    to {
-        opacity: 1;
-    }
+.rule-item.rule-visible {
+    opacity: 1;
+    max-height: 32px;
+    margin-bottom: 8px;
+}
+
+.rule-pct {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--red);
+    transition: color .3s;
 }
 
 .rule-dot {
@@ -599,12 +636,7 @@ html.lang-loading {
     box-shadow: 0 0 6px var(--orange);
 }
 
-.rule-pct {
-    margin-left: auto;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--red);
-}
+
 
 .threat-card__bar {
     height: 3px;
@@ -614,10 +646,10 @@ html.lang-loading {
 
 .threat-card__bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--red), var(--orange));
+    background: linear-gradient(90deg, #4ade80, #22c55e);
     width: 0;
-    transition: width 1.4s cubic-bezier(.4, 0, .2, 1) .6s;
-    box-shadow: 0 0 8px var(--red);
+    transition: width 1.1s cubic-bezier(.4, 0, .2, 1);
+    box-shadow: 0 0 8px rgba(74, 222, 128, .5);
 }
 
 .hero__scroll-hint {
@@ -696,9 +728,13 @@ html.lang-loading {
 }
 
 .section--dark {
-    background: var(--bg-2);
-    border-top: 1px solid var(--border-2);
-    border-bottom: 1px solid var(--border-2);
+    background-color: rgba(12, 16, 34, 0.55);
+    background-image: var(--noise);
+    background-blend-mode: overlay;
+    backdrop-filter: blur(22px) saturate(1.4);
+    -webkit-backdrop-filter: blur(22px) saturate(1.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .section__label {
