@@ -221,6 +221,15 @@ body {
 }
 
 
+.cursor {
+    animation: cur-blink .8s step-end infinite;
+}
+
+@keyframes cur-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
 /* ── FOUC prevention ─────────────────────────── */
 
 html.lang-loading {
@@ -394,6 +403,7 @@ html.lang-loading {
     background: linear-gradient(90deg, transparent 0%, var(--red) 20%, #fff 48%, var(--red) 70%, transparent 100%);
     transform: rotate(-.8deg);
     box-shadow: 0 0 8px var(--red);
+    will-change: opacity;
 }
 
 .cracked-word--lg {

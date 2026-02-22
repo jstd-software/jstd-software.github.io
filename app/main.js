@@ -46,29 +46,42 @@ const raf = requestAnimationFrame;
         };
     }
 
-    function init() {
-        resize();
-        stars = Array.from({ length: STAR_COUNT }, createStar);
-        // nebula blobs
-        window._nebulaBlobs = Array.from({ length: 4 }, (_, i) => ({
+    let nebulaBlobs = [];
+
+    function initBlobs() {
+        nebulaBlobs = Array.from({ length: 4 }, (_, i) => ({
             x: Math.random() * W,
             y: Math.random() * H,
             r: 180 + Math.random() * 220,
             color: NEBULA_COLORS[i % NEBULA_COLORS.length],
             alpha: 0.018 + Math.random() * 0.024,
         }));
+        cacheGradients();
+    }
+
+    function cacheGradients() {
+        nebulaBlobs.forEach(b => {
+            const g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+            g.addColorStop(0, b.color + b.alpha + ')');
+            g.addColorStop(0.5, b.color + (b.alpha * 0.4) + ')');
+            g.addColorStop(1, b.color + '0)');
+            b.cachedGrad = g;
+        });
+    }
+
+    function init() {
+        resize();
+        stars = Array.from({ length: STAR_COUNT }, createStar);
+        initBlobs();
     }
 
     function draw(ts = 0) {
+        if (document.hidden) return;
         ctx.clearRect(0, 0, W, H);
 
-        // nebula blobs
-        window._nebulaBlobs.forEach(b => {
-            const grad = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
-            grad.addColorStop(0, b.color + b.alpha + ')');
-            grad.addColorStop(0.5, b.color + (b.alpha * 0.4) + ')');
-            grad.addColorStop(1, b.color + '0)');
-            ctx.fillStyle = grad;
+        // nebula blobs (gradients pre-cached in init)
+        nebulaBlobs.forEach(b => {
+            ctx.fillStyle = b.cachedGrad;
             ctx.beginPath();
             ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
             ctx.fill();
@@ -104,9 +117,13 @@ const raf = requestAnimationFrame;
 
     init();
     draw();
+    let resizeTimer;
     window.addEventListener('resize', () => {
-        resize();
-        init();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => { resize(); cacheGradients(); }, 150);
+    });
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) raf(draw);
     });
 })();
 
@@ -185,13 +202,6 @@ qsa('.cracked-word').forEach(el => {
     }
 
     setTimeout(tick, 600);
-})();
-
-// Cursor blink style
-(function() {
-    const s = document.createElement('style');
-    s.textContent = '.cursor { animation: blink .8s step-end infinite; } @keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }';
-    document.head.appendChild(s);
 })();
 
 
@@ -282,6 +292,7 @@ qsa('.cracked-word').forEach(el => {
         }
 
         function frame() {
+            if (document.hidden) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.save();
             ctx.scale(DPR, DPR);
@@ -291,6 +302,10 @@ qsa('.cracked-word').forEach(el => {
             ctx.restore();
             raf(frame);
         }
+
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) raf(frame);
+        });
 
         frame();
     }
