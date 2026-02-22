@@ -2165,3 +2165,271 @@ body {
         align-items: flex-start;
     }
 }
+
+/* ═══════════════════════════════════════
+   DOWNLOAD PAGE
+═══════════════════════════════════════ */
+
+.page-dl {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 32px 80px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.page-dl__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 212, 255, .03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, .03) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+}
+
+/* ── Shield icon ── */
+
+.dl-icon {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 32px;
+}
+
+.dl-icon svg {
+    width: 96px;
+    height: 96px;
+}
+
+.dl-icon__ring {
+    position: absolute;
+    inset: -16px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 212, 255, .15);
+    animation: ringPulse 2.4s ease-in-out infinite;
+}
+
+.dl-icon__ring:nth-child(2) {
+    inset: -28px;
+    animation-delay: .6s;
+    border-color: rgba(0, 212, 255, .08);
+}
+
+.dl-icon__ring:nth-child(3) {
+    inset: -42px;
+    animation-delay: 1.2s;
+    border-color: rgba(0, 212, 255, .04);
+}
+
+@keyframes ringPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: .4; transform: scale(1.05); }
+}
+
+/* ── Status label ── */
+
+.dl-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    opacity: .7;
+    margin-bottom: 20px;
+}
+
+.dl-label__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00ff88;
+    box-shadow: 0 0 8px #00ff88;
+    animation: blink 1.2s step-start infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: .2; }
+}
+
+/* ── Title ── */
+
+.dl-title {
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.dl-title em {
+    font-style: normal;
+    color: var(--cyan);
+}
+
+/* ── Subtitle ── */
+
+.dl-sub {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-dim);
+    max-width: 480px;
+    margin: 0 auto 40px;
+}
+
+.dl-sub strong {
+    color: var(--text);
+}
+
+/* ── Progress bar ── */
+
+.dl-progress {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 12px;
+}
+
+.dl-progress__track {
+    height: 3px;
+    background: rgba(255, 255, 255, .06);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.dl-progress__fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00d4ff, #00ff88);
+    width: 0%;
+    animation: progressFill 3s ease-in-out forwards;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 212, 255, .5);
+}
+
+@keyframes progressFill {
+    0%   { width: 0%; }
+    60%  { width: 72%; }
+    85%  { width: 88%; }
+    100% { width: 100%; }
+}
+
+.dl-progress__label {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 8px;
+    opacity: .6;
+}
+
+/* ── Countdown ── */
+
+.dl-countdown {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 40px;
+}
+
+#cdNum {
+    color: var(--cyan);
+    font-weight: 700;
+}
+
+/* ── Manual link ── */
+
+.dl-manual {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 48px;
+}
+
+.dl-manual a {
+    color: var(--cyan);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.dl-manual a:hover {
+    color: var(--text);
+}
+
+/* ── Specs bar ── */
+
+.dl-specs {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dl-specs .spec {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .08em;
+    color: var(--text-dim);
+    opacity: .55;
+}
+
+/* ── Terminal block ── */
+
+.dl-terminal {
+    background: rgba(255, 255, 255, .025);
+    border: 1px solid rgba(255, 255, 255, .07);
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto 36px;
+    text-align: left;
+}
+
+.dl-terminal__bar {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+.dl-terminal__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .1);
+}
+
+.dl-terminal__body {
+    padding: 14px 16px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--text-dim);
+}
+
+.t-ok  { color: #00ff88; }
+.t-dim { color: rgba(255, 255, 255, .3); }
+.t-cmd { color: var(--text); }
+
+.t-cur {
+    display: inline-block;
+    width: 7px;
+    height: 13px;
+    background: var(--cyan);
+    vertical-align: text-bottom;
+    animation: blink 1s step-start infinite;
+}
