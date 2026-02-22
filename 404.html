@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" translate="no">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        ! function() {
+            var l = localStorage.getItem('jstd_lang') || (navigator.language || '').slice(0, 2);
+            if (l !== 'ru') document.documentElement.classList.add('lang-loading')
+        }();
+    </script>
     <title>404 — JSTD.AI</title>
+    <meta name="google" content="notranslate" />
+    <meta name="robots" content="noindex, nofollow" />
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -574,10 +582,11 @@
                 <span class="nav__logo-text">JSTD<span class="brand-accent">.AI</span></span>
             </a>
             <ul class="nav__links">
-                <li><a href="/#how-it-works">Принцип работы</a></li>
-                <li><a href="/#algorithms">Алгоритмы</a></li>
-                <li><a href="/#docs">Документация</a></li>
-                <li><a href="/" class="nav__cta-link">На главную</a></li>
+                <li><a href="/#how-it-works" data-i18n="nav.how">Принцип работы</a></li>
+                <li><a href="/#algorithms" data-i18n="nav.algorithms">Алгоритмы</a></li>
+                <li><a href="/#docs" data-i18n="nav.docs">Документация</a></li>
+                <li><a href="/" class="nav__cta-link" data-i18n="nav.home">На главную</a></li>
+                <li class="nav__lang-switch"><button class="lang-btn" data-lang-switch="ru">RU</button><span class="lang-sep">/</span><button class="lang-btn" data-lang-switch="en">EN</button></li>
             </ul>
         </div>
     </nav>
@@ -598,7 +607,7 @@
             <div class="error-code__back">404</div>
             <div class="error-code__front">404</div>
             <div class="error-code__scan"></div>
-            <div class="error-code__hint">кликни 4 раза</div>
+            <div class="error-code__hint" data-i18n="e404.hint">кликни 4 раза</div>
         </div>
 
         <!-- label + title -->
@@ -610,11 +619,11 @@
             </svg> РЕСУРС НЕ ОБНАРУЖЕН — СТАТУС 404
         </div>
 
-        <h1 class="error-title">
+        <h1 class="error-title" data-i18n-html="e404.title_html">
             Нейросеть не нашла<br />запрошенный ресурс
         </h1>
 
-        <p class="error-desc">
+        <p class="error-desc" data-i18n-html="e404.desc_html">
             Наш сканер обработал запрос за <code>&lt;&thinsp;1ms</code>, но указанный URL отсутствует в индексе. Возможно, страница была перемещена или никогда не существовала.
         </p>
 
@@ -622,13 +631,13 @@
             <a href="/" class="btn btn--primary">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M14 8H2M7 3L2 8L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
-                </svg> На главную
+                </svg> <span data-i18n="e404.btn_home">На главную</span>
             </a>
             <a href="/#docs" class="btn btn--ghost">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <rect x="3" y="1" width="10" height="14" stroke="currentColor" stroke-width="1.5" />
                     <path d="M6 5H10M6 8H10M6 11H8" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" />
-                </svg> Документация
+                </svg> <span data-i18n="e404.btn_docs">Документация</span>
             </a>
         </div>
 
@@ -643,11 +652,11 @@
                 <span class="t-line"><span class="t-dim">$</span> <span class="t-cmd">jstd analyze --url <span id="badUrl"></span></span>
                 </span>
                 <span class="t-line t-dim">  ↳ extracting features…</span>
-                <span class="t-line t-ok">  ✓ threat_score: 0.00 (чисто)</span>
-                <span class="t-line t-dim">  ↳ routing to resource…</span>
-                <span class="t-line t-err">  ✗ HTTP 404 — ресурс не найден</span>
-                <span class="t-line t-dim">  ↳ scanning alternative paths…</span>
-                <span class="t-line t-err">  ✗ альтернатив не найдено</span>
+                <span class="t-line t-ok" data-i18n="e404.term_ok">  ✓ threat_score: 0.00 (чисто)</span>
+                <span class="t-line t-dim">  ↓ routing to resource…</span>
+                <span class="t-line t-err" data-i18n="e404.term_err1">  ✗ HTTP 404 — ресурс не найден</span>
+                <span class="t-line t-dim">  ↓ scanning alternative paths…</span>
+                <span class="t-line t-err" data-i18n="e404.term_err2">  ✗ альтернатив не найдено</span>
                 <span class="t-line">&nbsp;</span>
                 <span class="t-line t-dim">$ <span class="t-cursor"></span></span>
             </div>
@@ -669,21 +678,21 @@
                         </svg>
                         <span class="nav__logo-text">JSTD<span class="brand-accent">.AI</span></span>
                     </a>
-                    <p>Проприетарная нейросетевая система<br />детекции угроз в JavaScript-коде.</p>
-                    <p class="footer__copy">© 2026 JSTD.AI. Все права защищены.</p>
+                    <p data-i18n-html="footer.brand_p">Проприетарная нейросетевая система<br />детекции угроз в JavaScript-коде.</p>
+                    <p class="footer__copy" data-i18n="footer.copy_short">© 2026 JSTD.AI. Все права защищены.</p>
                 </div>
                 <div class="footer__cols">
                     <div class="footer__col">
-                        <div class="footer__col-title">Продукт</div>
-                        <a href="#">Скачать</a>
-                        <a href="#">Документация</a>
+                        <div class="footer__col-title" data-i18n="footer.col1_title">Продукт</div>
+                        <a href="#" data-i18n="footer.col1_1">Скачать</a>
+                        <a href="#" data-i18n="footer.col1_2">Документация</a>
                         <a href="#">Changelog</a>
                     </div>
                     <div class="footer__col">
-                        <div class="footer__col-title">Компания</div>
-                        <a href="#">О нас</a>
-                        <a href="#">Блог</a>
-                        <a href="#">Контакты</a>
+                        <div class="footer__col-title" data-i18n="footer.col2_title">Компания</div>
+                        <a href="#" data-i18n="footer.col2_1">О нас</a>
+                        <a href="#" data-i18n="footer.col2_2">Блог</a>
+                        <a href="#" data-i18n="footer.col2_4">Контакты</a>
                     </div>
                 </div>
             </div>
@@ -712,7 +721,7 @@
     <!-- ░░ EASTER EGG OVERLAY ░░ -->
     <div class="easter-overlay" id="easterOverlay">
         <div class="easter-card">
-            <button class="easter-card__close" id="easterClose" aria-label="Закрыть">
+            <button class="easter-card__close" id="easterClose" aria-label="Закрыть" data-i18n-label="e404.ee_close">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                     <path d="M2 2L10 10M10 2L2 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
                 </svg>
@@ -722,21 +731,21 @@
                 <span class="easter-card__tag-dot"></span> CURIOSITY_CLASS · THREAT DETECTED
             </div>
 
-            <div class="easter-card__title">
+            <div class="easter-card__title" data-i18n-html="e404.ee_title_html">
                 Ой, а что это<br />мы <em>ищем?</em>
             </div>
 
             <div class="easter-card__rows">
                 <div class="easter-row easter-row--purple">
-                    <span class="easter-row__label">Тип угрозы</span>
-                    <span class="easter-row__val">Безудержное любопытство</span>
+                    <span class="easter-row__label" data-i18n="e404.ee_r1_lbl">Тип угрозы</span>
+                    <span class="easter-row__val" data-i18n="e404.ee_r1_val">Безудержное любопытство</span>
                 </div>
                 <div class="easter-row easter-row--cyan">
-                    <span class="easter-row__label">Вектор атаки</span>
+                    <span class="easter-row__label" data-i18n="e404.ee_r2_lbl">Вектор атаки</span>
                     <span class="easter-row__val">URL enumeration</span>
                 </div>
                 <div class="easter-row easter-row--amber">
-                    <span class="easter-row__label">Уровень риска</span>
+                    <span class="easter-row__label" data-i18n="e404.ee_r3_lbl">Уровень риска</span>
                     <span class="easter-row__val">🫣 Критически высокий</span>
                 </div>
             </div>
@@ -746,11 +755,12 @@
             </div>
 
             <div class="easter-card__footer">
-                Рекомендация: <span>вернитесь на главную и не трогайте 404.</span>
+                <span data-i18n="e404.ee_foot">Рекомендация: </span><span data-i18n="e404.ee_foot_sp">вернитесь на главную и не трогайте 404.</span>
             </div>
         </div>
     </div>
 
+    <script src="app/i18n.js"></script>
     <script src="app/main.js"></script>
     <script>
         /* ── display current bad URL in terminal ── */

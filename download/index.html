@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" translate="no">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        ! function() {
+            var l = localStorage.getItem('jstd_lang') || (navigator.language || '').slice(0, 2);
+            if (l !== 'ru') document.documentElement.classList.add('lang-loading')
+        }();
+    </script>
     <meta http-equiv="refresh" content="3; url=./jstd-ai.zip" />
     <title>Загрузка — JSTD.AI</title>
+    <meta name="google" content="notranslate" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Скачайте JSTD.AI — нейросетевой анализатор JavaScript угроз. Работает локально, без GPU и облака." />
+    <link rel="canonical" href="https://jstd.su/download/" />
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -31,10 +41,11 @@
                 <span class="nav__logo-text">JSTD<span class="brand-accent">.AI</span></span>
             </a>
             <ul class="nav__links">
-                <li><a href="/#how-it-works">Принцип работы</a></li>
-                <li><a href="/#algorithms">Алгоритмы</a></li>
-                <li><a href="/#docs">Документация</a></li>
-                <li><a href="/" class="nav__cta-link">На главную</a></li>
+                <li><a href="/#how-it-works" data-i18n="nav.how">Принцип работы</a></li>
+                <li><a href="/#algorithms" data-i18n="nav.algorithms">Алгоритмы</a></li>
+                <li><a href="/#docs" data-i18n="nav.docs">Документация</a></li>
+                <li><a href="/" class="nav__cta-link" data-i18n="nav.home">На главную</a></li>
+                <li class="nav__lang-switch"><button class="lang-btn" data-lang-switch="ru">RU</button><span class="lang-sep">/</span><button class="lang-btn" data-lang-switch="en">EN</button></li>
             </ul>
         </div>
     </nav>
@@ -59,14 +70,14 @@
 
         <!-- label -->
         <div class="dl-label">
-            <span class="dl-label__dot"></span> ИНИЦИАЛИЗАЦИЯ ЗАГРУЗКИ
+            <span class="dl-label__dot"></span> <span data-i18n="dl.label">ИНИЦИАЛИЗАЦИЯ ЗАГРУЗКИ</span>
         </div>
 
         <!-- title -->
-        <h1 class="dl-title">Спасибо за&nbsp;загрузку<em>!</em></h1>
+        <h1 class="dl-title" data-i18n-html="dl.title_html">Спасибо за&nbsp;загрузку<em>!</em></h1>
 
         <!-- sub -->
-        <p class="dl-sub">
+        <p class="dl-sub" data-i18n-html="dl.sub">
             Файл <strong>jstd-ai.zip</strong> автоматически скачается на ваш компьютер через несколько секунд. Если ничего не происходит — воспользуйтесь прямой ссылкой ниже.
         </p>
 
@@ -82,7 +93,7 @@
         </div>
 
         <!-- countdown -->
-        <p class="dl-countdown">Загрузка начнётся через <span id="cdNum">3</span> сек…</p>
+        <p class="dl-countdown"><span data-i18n="dl.cd_before">Загрузка начнётся через</span> <span id="cdNum">3</span> <span data-i18n="dl.cd_after">сек…</span></p>
 
         <!-- terminal -->
         <div class="dl-terminal">
@@ -93,10 +104,10 @@
             </div>
             <div class="dl-terminal__body">
                 <div class="t-dim">$ jstd download --version latest</div>
-                <div id="tLine1" style="display:none"><span class="t-dim">  ↳ проверка подписи…</span></div>
-                <div id="tLine2" style="display:none"><span class="t-ok">  ✓ подпись верна · SHA-256 совпадает</span></div>
-                <div id="tLine3" style="display:none"><span class="t-dim">  ↳ передача файла браузеру…</span></div>
-                <div id="tLine4" style="display:none"><span class="t-ok">  ✓ загрузка началась</span></div>
+                <div id="tLine1" style="display:none"><span class="t-dim" data-i18n="dl.tl1">  ↓ проверка подписи…</span></div>
+                <div id="tLine2" style="display:none"><span class="t-ok" data-i18n="dl.tl2">  ✓ подпись верна · SHA-256 совпадает</span></div>
+                <div id="tLine3" style="display:none"><span class="t-dim" data-i18n="dl.tl3">  ↓ передача файла браузеру…</span></div>
+                <div id="tLine4" style="display:none"><span class="t-ok" data-i18n="dl.tl4">  ✓ загрузка началась</span></div>
                 <div><span class="t-dim">$ <span class="t-cur"></span></span>
                 </div>
             </div>
@@ -104,8 +115,8 @@
 
         <!-- manual link -->
         <p class="dl-manual">
-            Скачивание не началось?
-            <a href="./jstd-ai.zip" id="manualLink">Нажмите здесь</a>
+            <span data-i18n="dl.manual_q">Скачивание не началось?</span>
+            <a href="./jstd-ai.zip" id="manualLink" data-i18n="dl.manual_lnk">Нажмите здесь</a>
         </p>
 
         <!-- specs -->
@@ -126,12 +137,12 @@
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <rect x="1.5" y="1.5" width="11" height="11" stroke="#a78bfa" stroke-width="1" />
                     <path d="M4.5 7H9.5M7 4.5V9.5" stroke="#a78bfa" stroke-width="1" stroke-linecap="square" />
-                </svg> ~4 MB установщик
+                </svg> <span data-i18n="dl.spec3">~4 MB установщик</span>
             </div>
             <div class="spec">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M2.5 7L5.5 10L11.5 4" stroke="#00ff88" stroke-width="1.4" stroke-linecap="square" />
-                </svg> Без интернета
+                </svg> <span data-i18n="dl.spec4">Без интернета</span>
             </div>
         </div>
     </main>
@@ -151,21 +162,21 @@
                         </svg>
                         <span class="nav__logo-text">JSTD<span class="brand-accent">.AI</span></span>
                     </a>
-                    <p>Проприетарная нейросетевая система<br />детекции угроз в JavaScript-коде.</p>
-                    <p class="footer__copy">© 2026 JSTD.AI. Все права защищены.</p>
+                    <p data-i18n-html="footer.brand_p">Проприетарная нейросетевая система<br />детекции угроз в JavaScript-коде.</p>
+                    <p class="footer__copy" data-i18n="footer.copy_short">© 2026 JSTD.AI. Все права защищены.</p>
                 </div>
                 <div class="footer__cols">
                     <div class="footer__col">
-                        <div class="footer__col-title">Продукт</div>
-                        <a href="#">Скачать</a>
-                        <a href="#">Документация</a>
+                        <div class="footer__col-title" data-i18n="footer.col1_title">Продукт</div>
+                        <a href="#" data-i18n="footer.col1_1">Скачать</a>
+                        <a href="#" data-i18n="footer.col1_2">Документация</a>
                         <a href="#">Changelog</a>
                     </div>
                     <div class="footer__col">
-                        <div class="footer__col-title">Компания</div>
-                        <a href="#">О нас</a>
-                        <a href="#">Блог</a>
-                        <a href="#">Контакты</a>
+                        <div class="footer__col-title" data-i18n="footer.col2_title">Компания</div>
+                        <a href="#" data-i18n="footer.col2_1">О нас</a>
+                        <a href="#" data-i18n="footer.col2_2">Блог</a>
+                        <a href="#" data-i18n="footer.col2_4">Контакты</a>
                     </div>
                 </div>
             </div>
@@ -191,6 +202,7 @@
         <img class="footer-cat" src="../flexing-cat.gif" alt="" aria-hidden="true">
     </footer>
 
+    <script src="../app/i18n.js"></script>
     <script src="../app/main.js"></script>
     <script>
         /* ── countdown ── */
