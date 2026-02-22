@@ -611,7 +611,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                     fill="#00d4ff" fill-opacity="0.2" />
                             </svg>
                         </div>
-                        <p class="tcard__text">"We run a marketplace and regularly receive JS widgets from third-party vendors. Before JSTD.AI, every file had to be read manually — or trusted blindly. After one incident with an embedded keylogger in a partner's widget, we made scanning mandatory. JSTD.AI does in 2 seconds what used to take an hour of review."</p>
+                        <p class="tcard__text">"We run a marketplace and regularly receive JS widgets from third-party vendors. Before JSTD.AI, every file had to be read manually — or trusted blindly. After one incident with an embedded keylogger in a partner's widget, we made
+                            scanning mandatory. JSTD.AI does in 2 seconds what used to take an hour of review."</p>
                         <div class="tcard__author">
                             <div class="tcard__avatar">AK</div>
                             <div>
@@ -630,7 +631,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                     fill="#a78bfa" fill-opacity="0.2" />
                             </svg>
                         </div>
-                        <p class="tcard__text">"Our security team uses JSTD.AI to pre-screen source code from freelancers before it reaches the architect review. In the first month the system flagged 4 files with real threats — one turned out to be a full backdoor with a WebSocket channel. We would have missed it without this tool."</p>
+                        <p class="tcard__text">"Our security team uses JSTD.AI to pre-screen source code from freelancers before it reaches the architect review. In the first month the system flagged 4 files with real threats — one turned out to be a full backdoor with a WebSocket
+                            channel. We would have missed it without this tool."</p>
                         <div class="tcard__author">
                             <div class="tcard__avatar">MV</div>
                             <div>
@@ -649,7 +651,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                     fill="#00ff88" fill-opacity="0.2" />
                             </svg>
                         </div>
-                        <p class="tcard__text">"We're an outsourcing studio — we receive finished code from 12+ contractors monthly. JSTD.AI is integrated into our Slack bot: a dev drops in a file, the bot responds in 3 seconds with the threat level. We caught prototype pollution in npm scripts twice — the contractor had 'accidentally' bundled it with a production dependency."</p>
+                        <p class="tcard__text">"We're an outsourcing studio — we receive finished code from 12+ contractors monthly. JSTD.AI is integrated into our Slack bot: a dev drops in a file, the bot responds in 3 seconds with the threat level. We caught prototype pollution
+                            in npm scripts twice — the contractor had 'accidentally' bundled it with a production dependency."</p>
                         <div class="tcard__author">
                             <div class="tcard__avatar">DS</div>
                             <div>
@@ -668,7 +671,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                     fill="#ff6600" fill-opacity="0.2" />
                             </svg>
                         </div>
-                        <p class="tcard__text">"We run JSTD.AI as a CI/CD step before deploying to the staging server. Integration took 20 minutes. Now if a PR contains anything with eval() + Base64 — the pipeline fails automatically and the PR won't merge. Developers have become much more careful with dependencies."</p>
+                        <p class="tcard__text">"We run JSTD.AI as a CI/CD step before deploying to the staging server. Integration took 20 minutes. Now if a PR contains anything with eval() + Base64 — the pipeline fails automatically and the PR won't merge. Developers have
+                            become much more careful with dependencies."</p>
                         <div class="tcard__author">
                             <div class="tcard__avatar">EP</div>
                             <div>
@@ -687,7 +691,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                                     fill="#00d4ff" fill-opacity="0.15" />
                             </svg>
                         </div>
-                        <p class="tcard__text">"A government contract requires certification of delivered software. JSTD.AI generates an HTML report detailing every detected pattern — this has become part of our document package for the client. No longer need a separate pentest for a basic audit of JS components."</p>
+                        <p class="tcard__text">"A government contract requires certification of delivered software. JSTD.AI generates an HTML report detailing every detected pattern — this has become part of our document package for the client. No longer need a separate pentest
+                            for a basic audit of JS components."</p>
                         <div class="tcard__author">
                             <div class="tcard__avatar">IR</div>
                             <div>
@@ -989,7 +994,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                             </svg>
                             Why does safe code with <code>fetch()</code> get a non-zero score?
                         </button>
-                        <div class="faq-item__a">The neural network assesses threat probability statistically. The presence of <code>fetch()</code>, <code>XMLHttpRequest</code>, or <code>localStorage</code> on its own is not a threat — but it raises the base score. The final classification considers a combination of features: a single <code>fetch()</code> without a dangerous context will yield a SAFE or LOW level.</div>
+                        <div class="faq-item__a">The neural network assesses threat probability statistically. The presence of <code>fetch()</code>, <code>XMLHttpRequest</code>, or <code>localStorage</code> on its own is not a threat — but it raises the base score. The final
+                            classification considers a combination of features: a single <code>fetch()</code> without a dangerous context will yield a SAFE or LOW level.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
@@ -999,7 +1005,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                             </svg>
                             What does "Obfuscation" mean if the code was written by hand?
                         </button>
-                        <div class="faq-item__a">The "Obfuscation level" feature is not a flag indicating a run through an obfuscator — it is a metric of code characteristics: long strings without spaces, high entropy, hex literals, minimal comments. Minified bundles (webpack, esbuild) will have a non-zero level — this is normal and is factored into the final score calculation.</div>
+                        <div class="faq-item__a">The "Obfuscation level" feature is not a flag indicating a run through an obfuscator — it is a metric of code characteristics: long strings without spaces, high entropy, hex literals, minimal comments. Minified bundles (webpack,
+                            esbuild) will have a non-zero level — this is normal and is factored into the final score calculation.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
@@ -1009,7 +1016,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                             </svg>
                             What does the HTML report contain?
                         </button>
-                        <div class="faq-item__a">The HTML report includes: a header with date and analyst name, a summary table for all files, a detailed breakdown for each file (Summary + Triggered Rules + Detected Features), source code, and an analysis timestamp. The file is self-contained — no internet required to view it.</div>
+                        <div class="faq-item__a">The HTML report includes: a header with date and analyst name, a summary table for all files, a detailed breakdown for each file (Summary + Triggered Rules + Detected Features), source code, and an analysis timestamp. The file
+                            is self-contained — no internet required to view it.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
@@ -1019,7 +1027,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                             </svg>
                             Can minified files be analyzed?
                         </button>
-                        <div class="faq-item__a">Yes. The neural network was trained on minified code examples. Features are extracted independently of formatting. Minification itself raises the obfuscation feature, but does not affect the final classification — without dangerous patterns the file will receive SAFE or LOW.</div>
+                        <div class="faq-item__a">Yes. The neural network was trained on minified code examples. Features are extracted independently of formatting. Minification itself raises the obfuscation feature, but does not affect the final classification — without dangerous
+                            patterns the file will receive SAFE or LOW.</div>
                     </div>
                 </div>
             </div>

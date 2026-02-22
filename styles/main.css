@@ -2166,6 +2166,7 @@ body {
     }
 }
 
+
 /* ═══════════════════════════════════════
    DOWNLOAD PAGE
 ═══════════════════════════════════════ */
@@ -2185,13 +2186,12 @@ body {
 .page-dl__grid {
     position: absolute;
     inset: 0;
-    background-image:
-        linear-gradient(rgba(0, 212, 255, .03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 212, 255, .03) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(0, 212, 255, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 212, 255, .03) 1px, transparent 1px);
     background-size: 56px 56px;
     pointer-events: none;
     mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
 }
+
 
 /* ── Shield icon ── */
 
@@ -2228,9 +2228,17 @@ body {
 }
 
 @keyframes ringPulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%       { opacity: .4; transform: scale(1.05); }
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: .4;
+        transform: scale(1.05);
+    }
 }
+
 
 /* ── Status label ── */
 
@@ -2257,9 +2265,15 @@ body {
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: .2; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .2;
+    }
 }
+
 
 /* ── Title ── */
 
@@ -2277,6 +2291,7 @@ body {
     color: var(--cyan);
 }
 
+
 /* ── Subtitle ── */
 
 .dl-sub {
@@ -2290,6 +2305,7 @@ body {
 .dl-sub strong {
     color: var(--text);
 }
+
 
 /* ── Progress bar ── */
 
@@ -2317,10 +2333,18 @@ body {
 }
 
 @keyframes progressFill {
-    0%   { width: 0%; }
-    60%  { width: 72%; }
-    85%  { width: 88%; }
-    100% { width: 100%; }
+    0% {
+        width: 0%;
+    }
+    60% {
+        width: 72%;
+    }
+    85% {
+        width: 88%;
+    }
+    100% {
+        width: 100%;
+    }
 }
 
 .dl-progress__label {
@@ -2332,6 +2356,7 @@ body {
     margin-top: 8px;
     opacity: .6;
 }
+
 
 /* ── Countdown ── */
 
@@ -2346,6 +2371,7 @@ body {
     color: var(--cyan);
     font-weight: 700;
 }
+
 
 /* ── Manual link ── */
 
@@ -2364,6 +2390,7 @@ body {
 .dl-manual a:hover {
     color: var(--text);
 }
+
 
 /* ── Specs bar ── */
 
@@ -2384,6 +2411,7 @@ body {
     color: var(--text-dim);
     opacity: .55;
 }
+
 
 /* ── Terminal block ── */
 
@@ -2421,9 +2449,17 @@ body {
     color: var(--text-dim);
 }
 
-.t-ok  { color: #00ff88; }
-.t-dim { color: rgba(255, 255, 255, .3); }
-.t-cmd { color: var(--text); }
+.t-ok {
+    color: #00ff88;
+}
+
+.t-dim {
+    color: rgba(255, 255, 255, .3);
+}
+
+.t-cmd {
+    color: var(--text);
+}
 
 .t-cur {
     display: inline-block;
