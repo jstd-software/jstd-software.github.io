@@ -185,6 +185,40 @@ qsa('.cracked-word').forEach(el => {
         critical: 'linear-gradient(90deg,#f87171,#fb923c)',
     };
 
+    const LABEL_GLITCH = '!@#%^&*<>[]{}|~/?=+-_.:;';
+
+    function scrambleLabel(newText, newColor) {
+        if (!labelEl) return;
+        /* Start color transition immediately — it runs in parallel with the scramble */
+        labelEl.style.color = newColor;
+        const target = newText.split('');
+        let work = labelEl.textContent.padEnd(target.length, ' ').slice(0, target.length).split('');
+        let frame = 0;
+        const total = target.length;
+        const framesPerChar = 2;
+
+        function rnd() { return LABEL_GLITCH[Math.floor(Math.random() * LABEL_GLITCH.length)]; }
+
+        function step() {
+            const charsDone = Math.floor(frame / framesPerChar);
+            for (let i = 0; i < total; i++) {
+                if (i < charsDone) {
+                    work[i] = target[i];
+                } else {
+                    work[i] = target[i] === ' ' ? ' ' : rnd();
+                }
+            }
+            labelEl.textContent = work.join('');
+            frame++;
+            if (charsDone < total) {
+                setTimeout(step, 28);
+            } else {
+                labelEl.textContent = newText;
+            }
+        }
+        step();
+    }
+
     function setLevel(name) {
         const { label, color } = LEVELS[name];
         if (card) {
@@ -196,32 +230,7 @@ qsa('.cracked-word').forEach(el => {
         if (scoreEl)  scoreEl.style.color = color;
         if (barFillEl) { barFillEl.style.background = BAR_GRAD[name]; barFillEl.style.boxShadow = `0 0 8px ${hexToRgba(color, 0.45)}`; }
         if (card) card.querySelectorAll('.threat-card__header svg path').forEach(p => p.setAttribute('stroke', color));
-        if (labelEl) {
-            const CHARS = '!@#%^&*<>[]{}|~/?=+-_.:;';
-            const target = label;
-            const prev = labelEl.textContent;
-            const len = Math.max(prev.length, target.length);
-            let frame = 0;
-            const totalFrames = 10;
-            labelEl.style.color = color;
-            const scramble = setInterval(() => {
-                frame++;
-                const t = frame / totalFrames;
-                let out = '';
-                for (let i = 0; i < len; i++) {
-                    if (i < target.length && Math.random() < t * 1.4) {
-                        out += target[i];
-                    } else if (i < len) {
-                        out += CHARS[Math.floor(Math.random() * CHARS.length)];
-                    }
-                }
-                labelEl.textContent = out.slice(0, Math.max(prev.length, target.length));
-                if (frame >= totalFrames) {
-                    clearInterval(scramble);
-                    labelEl.textContent = target;
-                }
-            }, 30);
-        }
+        scrambleLabel(label, color);
     }
 
     const lines = [
