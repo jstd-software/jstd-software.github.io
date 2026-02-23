@@ -45,7 +45,9 @@ body {
     overflow-x: hidden;
 }
 
+
 /* ── FROSTED GLASS — applied site-wide to all card-like surfaces ──────── */
+
 .threat-card,
 .pipeline__step,
 .algo-card,
@@ -605,9 +607,7 @@ html.lang-loading {
     max-height: 0;
     overflow: hidden;
     margin-bottom: 0;
-    transition: max-height .45s cubic-bezier(0, 1, .4, 1),
-                opacity    .45s ease,
-                margin-bottom .45s ease;
+    transition: max-height .45s cubic-bezier(0, 1, .4, 1), opacity .45s ease, margin-bottom .45s ease;
 }
 
 .rule-item.rule-visible {
@@ -640,8 +640,6 @@ html.lang-loading {
     box-shadow: 0 0 6px var(--orange);
 }
 
-
-
 .threat-card__bar {
     height: 3px;
     background: rgba(255, 51, 102, .15);
@@ -663,12 +661,20 @@ html.lang-loading {
     transform: translateX(-50%);
     color: var(--text-3);
     grid-column: 1 / -1;
-    animation: arrowBounce 1.8s ease-in-out infinite;
 }
 
-@keyframes arrowBounce {
-    0%, 100% { transform: translateX(-50%) translateY(0);   opacity: .45; }
-    50%       { transform: translateX(-50%) translateY(6px); opacity: 1;   }
+.scroll-dot {
+    animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
 }
 
 
@@ -713,8 +719,6 @@ html.lang-loading {
         transform: translateX(-50%);
     }
 }
-
-
 
 
 /* ── SECTIONS ────────────────────────────────── */
