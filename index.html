@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-        ! function() {
+        ! function () {
             var l = localStorage.getItem('jstd_lang') || (navigator.language || '').slice(0, 2);
             if (l !== 'ru') document.documentElement.classList.add('lang-loading');
         }();
@@ -19,14 +19,23 @@
     <link rel="alternate" hreflang="ru" href="https://jstd.su/" />
     <link rel="alternate" hreflang="en" href="https://jstd.su/en/" />
     <link rel="alternate" hreflang="x-default" href="https://jstd.su/" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <meta name="author" content="JSTD.AI" />
+    <meta name="theme-color" content="#0a0e1a" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JSTD.AI" />
     <meta property="og:title" content="JSTD.AI — Neural JavaScript Threat Detection" />
     <meta property="og:description" content="Нейросетевая модель 50→30→1 для анализа JavaScript на угрозы, обфускацию и зловреды. Точность 99.7%. Без GPU и облака." />
     <meta property="og:url" content="https://jstd.su/" />
+    <meta property="og:image" content="https://jstd.su/favicon.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:locale" content="ru_RU" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="JSTD.AI — Neural JavaScript Threat Detection" />
     <meta name="twitter:description" content="Нейросетевая модель 50→30→1 для анализа JavaScript на угрозы, обфускацию и зловреды. Точность 99.7%. Без GPU и облака." />
+    <meta name="twitter:image" content="https://jstd.su/favicon.png" />
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,10 +52,8 @@
         <div class="nav__inner">
             <a href="#" class="nav__logo">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M16 2L4 7.5V16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16V7.5L16 2Z"
-                        stroke="#00d4ff" stroke-width="1.5" fill="none" />
-                    <path d="M16 7L9 10.25V16C9 19.866 12.134 23 16 23C19.866 23 23 19.866 23 16V10.25L16 7Z"
-                        fill="#00d4ff" fill-opacity="0.12" stroke="#00d4ff" stroke-width="1" />
+                    <path d="M16 2L4 7.5V16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16V7.5L16 2Z" stroke="#00d4ff" stroke-width="1.5" fill="none" />
+                    <path d="M16 7L9 10.25V16C9 19.866 12.134 23 16 23C19.866 23 23 19.866 23 16V10.25L16 7Z" fill="#00d4ff" fill-opacity="0.12" stroke="#00d4ff" stroke-width="1" />
                     <path d="M13 16L15.5 18.5L20 13" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="square" />
                     <circle cx="16" cy="16" r="1.5" fill="#00d4ff" />
                 </svg>
@@ -66,8 +73,7 @@
             </ul>
             <button class="nav__burger" id="navBurger" aria-label="Меню">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="1.5"
-                        stroke-linecap="square" />
+                    <path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
                 </svg>
             </button>
         </div>
@@ -93,8 +99,7 @@
             <div class="hero__actions">
                 <a href="#cta" class="btn btn--primary">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M2 8H14M9 3L14 8L9 13" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="square" />
+                        <path d="M2 8H14M9 3L14 8L9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
                     </svg> <span data-i18n="hero.cta_primary">Начать анализ</span>
                 </a>
                 <a href="#how-it-works" class="btn btn--ghost">
@@ -135,8 +140,7 @@
             <div class="threat-card" id="heroThreatCard">
                 <div class="threat-card__header">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <path d="M9 1L1 5V10C1 13.866 4.686 17 9 17C13.314 17 17 13.866 17 10V5L9 1Z" stroke="currentColor"
-                            stroke-width="1.3" />
+                        <path d="M9 1L1 5V10C1 13.866 4.686 17 9 17C13.314 17 17 13.866 17 10V5L9 1Z" stroke="currentColor" stroke-width="1.3" />
                         <path d="M9 6V10M9 12.5V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
                     </svg>
                     <span id="heroThreatLabel">SAFE</span>
@@ -162,10 +166,9 @@
                 </div>
             </div>
         </div>
-        <div class="hero__scroll-hint">
-            <svg width="20" height="30" viewBox="0 0 20 30" fill="none">
-                <rect x="1" y="1" width="18" height="28" stroke="currentColor" stroke-width="1.2" />
-                <circle cx="10" cy="8" r="2" fill="currentColor" class="scroll-dot" />
+        <div class="hero__scroll-hint" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M11 3V17M5 11L11 17L17 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
             </svg>
         </div>
     </section>
@@ -217,11 +220,9 @@
                     <div class="pipeline__icon">
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                             <rect x="4" y="2" width="24" height="28" stroke="#00d4ff" stroke-width="1.3" />
-                            <path d="M9 8H23M9 13H23M9 18H17" stroke="#00d4ff" stroke-width="1.3"
-                                stroke-linecap="square" />
+                            <path d="M9 8H23M9 13H23M9 18H17" stroke="#00d4ff" stroke-width="1.3" stroke-linecap="square" />
                             <circle cx="22" cy="22" r="5" fill="#050810" stroke="#00ff88" stroke-width="1.3" />
-                            <path d="M20 22L21.5 23.5L24 21" stroke="#00ff88" stroke-width="1.2"
-                                stroke-linecap="square" />
+                            <path d="M20 22L21.5 23.5L24 21" stroke="#00ff88" stroke-width="1.2" stroke-linecap="square" />
                         </svg>
                     </div>
                     <h3 data-i18n="hiw.s1_h3">Загрузка файла</h3>
@@ -237,8 +238,7 @@
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                             <rect x="2" y="6" width="12" height="20" stroke="#a78bfa" stroke-width="1.3" />
                             <rect x="18" y="6" width="12" height="20" stroke="#a78bfa" stroke-width="1.3" />
-                            <path d="M14 16H18M11 10H17M11 22H17" stroke="#a78bfa" stroke-width="1.3"
-                                stroke-linecap="square" />
+                            <path d="M14 16H18M11 10H17M11 22H17" stroke="#a78bfa" stroke-width="1.3" stroke-linecap="square" />
                             <path d="M6 11H10M6 16H10M6 21H10" stroke="#a78bfa" stroke-width="1" opacity=".6" />
                             <path d="M22 11H26M22 16H26M22 21H26" stroke="#a78bfa" stroke-width="1" opacity=".6" />
                         </svg>
@@ -261,10 +261,8 @@
                             <circle cx="16" cy="14" r="2.5" stroke="#a78bfa" stroke-width="1.2" />
                             <circle cx="16" cy="22" r="2.5" stroke="#a78bfa" stroke-width="1.2" />
                             <circle cx="28" cy="16" r="2.5" stroke="#00ff88" stroke-width="1.2" />
-                            <path d="M6.5 8.5L13.5 6.5M6.5 9L13.5 14M6.5 16L13.5 14M6.5 16L13.5 22M6.5 23.5L13.5 22"
-                                stroke="#334155" stroke-width="1" opacity=".7" />
-                            <path d="M18.5 6.5L25.5 15.5M18.5 14L25.5 16M18.5 22L25.5 16.5" stroke="#334155"
-                                stroke-width="1" opacity=".7" />
+                            <path d="M6.5 8.5L13.5 6.5M6.5 9L13.5 14M6.5 16L13.5 14M6.5 16L13.5 22M6.5 23.5L13.5 22" stroke="#334155" stroke-width="1" opacity=".7" />
+                            <path d="M18.5 6.5L25.5 15.5M18.5 14L25.5 16M18.5 22L25.5 16.5" stroke="#334155" stroke-width="1" opacity=".7" />
                         </svg>
                     </div>
                     <h3 data-i18n="hiw.s3_h3">Нейронная сеть 50→30→1</h3>
@@ -282,8 +280,7 @@
                             <path d="M18 4H28V14H18V4Z" stroke="#ff3366" stroke-width="1.3" opacity=".5" />
                             <path d="M4 18H14V28H4V18Z" stroke="#ff3366" stroke-width="1.3" opacity=".5" />
                             <path d="M18 18H28V28H18V18Z" stroke="#ff3366" stroke-width="1.3" />
-                            <path d="M7 9H11M21 9H25M7 23H11M21 23H25" stroke="#ff3366" stroke-width="1.3"
-                                stroke-linecap="square" />
+                            <path d="M7 9H11M21 9H25M7 23H11M21 23H25" stroke="#ff3366" stroke-width="1.3" stroke-linecap="square" />
                         </svg>
                     </div>
                     <h3 data-i18n="hiw.s4_h3">Эвристические правила</h3>
@@ -491,8 +488,7 @@
                         <div class="obfusc-item">
                             <div class="obfusc-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M3 12L21 12M3 12L9 6M3 12L9 18" stroke="#ff3366" stroke-width="1.4"
-                                        stroke-linecap="square" />
+                                    <path d="M3 12L21 12M3 12L9 6M3 12L9 18" stroke="#ff3366" stroke-width="1.4" stroke-linecap="square" />
                                 </svg>
                             </div>
                             <strong data-i18n="algo.ob_hex_t">Hex-эскейпинг</strong>
@@ -503,10 +499,8 @@
                             <div class="obfusc-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <rect x="3" y="3" width="8" height="8" stroke="#ff6600" stroke-width="1.4" />
-                                    <rect x="13" y="3" width="8" height="8" stroke="#ff6600" stroke-width="1.4"
-                                        opacity=".5" />
-                                    <rect x="3" y="13" width="8" height="8" stroke="#ff6600" stroke-width="1.4"
-                                        opacity=".5" />
+                                    <rect x="13" y="3" width="8" height="8" stroke="#ff6600" stroke-width="1.4" opacity=".5" />
+                                    <rect x="3" y="13" width="8" height="8" stroke="#ff6600" stroke-width="1.4" opacity=".5" />
                                     <rect x="13" y="13" width="8" height="8" stroke="#ff6600" stroke-width="1.4" />
                                 </svg>
                             </div>
@@ -518,8 +512,7 @@
                             <div class="obfusc-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <circle cx="12" cy="12" r="9" stroke="#f59e0b" stroke-width="1.4" />
-                                    <path d="M12 7V13L16 15" stroke="#f59e0b" stroke-width="1.4"
-                                        stroke-linecap="square" />
+                                    <path d="M12 7V13L16 15" stroke="#f59e0b" stroke-width="1.4" stroke-linecap="square" />
                                 </svg>
                             </div>
                             <strong data-i18n="algo.ob_b64_t">Base64 цепочки</strong>
@@ -529,8 +522,7 @@
                         <div class="obfusc-item">
                             <div class="obfusc-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M4 4L20 20M4 20L20 4" stroke="#a78bfa" stroke-width="1.4"
-                                        stroke-linecap="square" />
+                                    <path d="M4 4L20 20M4 20L20 4" stroke="#a78bfa" stroke-width="1.4" stroke-linecap="square" />
                                 </svg>
                             </div>
                             <strong>Function constructor</strong>
@@ -541,8 +533,7 @@
                             <div class="obfusc-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M5 3H19V21H5V3Z" stroke="#00d4ff" stroke-width="1.4" />
-                                    <path d="M9 8H15M9 12H15M9 16H12" stroke="#00d4ff" stroke-width="1.2"
-                                        opacity=".5" />
+                                    <path d="M9 8H15M9 12H15M9 16H12" stroke="#00d4ff" stroke-width="1.2" opacity=".5" />
                                 </svg>
                             </div>
                             <strong>Prototype pollution</strong>
@@ -553,8 +544,7 @@
                             <div class="obfusc-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M12 3L3 8V16L12 21L21 16V8L12 3Z" stroke="#00ff88" stroke-width="1.4" />
-                                    <path d="M12 8V12M12 15V16" stroke="#00ff88" stroke-width="1.4"
-                                        stroke-linecap="square" />
+                                    <path d="M12 8V12M12 15V16" stroke="#00ff88" stroke-width="1.4" stroke-linecap="square" />
                                 </svg>
                             </div>
                             <strong>Self-modifying code</strong>
@@ -637,9 +627,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="tcard">
                         <div class="tcard__quote">
                             <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                <path
-                                    d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
-                                    fill="#00d4ff" fill-opacity="0.2" />
+                                <path d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z" fill="#00d4ff" fill-opacity="0.2" />
                             </svg>
                         </div>
                         <p class="tcard__text" data-i18n="test.t1_text">«Мы разрабатываем маркетплейс и регулярно получаем JS-виджеты от сторонних поставщиков. До JSTD.AI каждый файл приходилось читать вручную — или доверять. После одного инцидента с вшитым кейлоггером в виджете партнёра мы ввели обязательное
@@ -658,9 +646,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="tcard">
                         <div class="tcard__quote">
                             <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                <path
-                                    d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
-                                    fill="#a78bfa" fill-opacity="0.2" />
+                                <path d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z" fill="#a78bfa" fill-opacity="0.2" />
                             </svg>
                         </div>
                         <p class="tcard__text" data-i18n="test.t2_text">«Наш отдел безопасности использует JSTD.AI для предварительного отсева исходников от фрилансеров перед тем, как они попадают на ревью архитекторам. За первый месяц система пометила 4 файла с реальными угрозами — один оказался полноценным
@@ -679,9 +665,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="tcard">
                         <div class="tcard__quote">
                             <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                <path
-                                    d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
-                                    fill="#00ff88" fill-opacity="0.2" />
+                                <path d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z" fill="#00ff88" fill-opacity="0.2" />
                             </svg>
                         </div>
                         <p class="tcard__text" data-i18n="test.t3_text">«Мы аутсорсинговая студия — получаем готовый код от 12+ подрядчиков ежемесячно. JSTD.AI встроен в наш Slack-бот: разработчик закидывает файл, бот через 3 секунды отвечает уровнем угрозы. Два раза поймали prototype pollution в npm-скриптах,
@@ -700,9 +684,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="tcard">
                         <div class="tcard__quote">
                             <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                <path
-                                    d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
-                                    fill="#ff6600" fill-opacity="0.2" />
+                                <path d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z" fill="#ff6600" fill-opacity="0.2" />
                             </svg>
                         </div>
                         <p class="tcard__text" data-i18n="test.t4_text">«Запускаем JSTD.AI как шаг в CI/CD перед деплоем на стейджинг-сервер. Интеграция заняла 20 минут. Теперь если в PR появляется что-то с eval() + Base64 — пайплайн падает автоматически и PR не мёрджится. Разработчики стали аккуратнее
@@ -721,9 +703,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="tcard">
                         <div class="tcard__quote">
                             <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                <path
-                                    d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
-                                    fill="#00d4ff" fill-opacity="0.15" />
+                                <path d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z" fill="#00d4ff" fill-opacity="0.15" />
                             </svg>
                         </div>
                         <p class="tcard__text" data-i18n="test.t5_text">«Госконтракт требует сертификации поставляемого ПО. JSTD.AI генерирует HTML-отчёт с детализацией каждого найденного паттерна — это стало частью нашего пакета документов для заказчика. Больше не нужен отдельный пентест для базового
@@ -742,9 +722,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="tcard">
                         <div class="tcard__quote">
                             <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
-                                <path
-                                    d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z"
-                                    fill="#a78bfa" fill-opacity="0.15" />
+                                <path d="M0 24V14C0 9.333 1.6 5.333 4.8 2 6.133.667 7.6 0 9.2 0L10.4 2.4C8.267 3.2 6.667 4.4 5.6 6c-.8 1.2-1.2 2.533-1.2 4H8V24H0ZM18 24V14c0-4.667 1.6-8.667 4.8-12C24.133.667 25.6 0 27.2 0L28.4 2.4c-2.133.8-3.733 2-4.8 3.6-.8 1.2-1.2 2.533-1.2 4H26V24H18Z" fill="#a78bfa" fill-opacity="0.15" />
                             </svg>
                         </div>
                         <p class="tcard__text" data-i18n="test.t6_text">«Перешли на JSTD.AI после того, как npm-аудит пропустил обфусцированный стилер в транзитивной зависимости. JSTD поймал его за секунду — eval внутри закодированной строки, которую стандартные линтеры считали валидным кодом. С тех
@@ -765,15 +743,13 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                 <div class="testimonials__controls">
                     <button class="tctl tctl--prev" id="tPrev" aria-label="Предыдущий" data-i18n-label="test.prev">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="square" />
+                            <path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
                         </svg>
                     </button>
                     <div class="testimonials__dots" id="tDots"></div>
                     <button class="tctl tctl--next" id="tNext" aria-label="Следующий" data-i18n-label="test.next">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="square" />
+                            <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
                         </svg>
                     </button>
                 </div>
@@ -835,11 +811,9 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="docs-card__icon">
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                             <rect x="2" y="2" width="24" height="24" stroke="#00d4ff" stroke-width="1.3" />
-                            <path d="M7 8H21M7 13H21M7 18H15" stroke="#00d4ff" stroke-width="1.2"
-                                stroke-linecap="square" opacity=".7" />
+                            <path d="M7 8H21M7 13H21M7 18H15" stroke="#00d4ff" stroke-width="1.2" stroke-linecap="square" opacity=".7" />
                             <circle cx="21" cy="18" r="4" fill="#050810" stroke="#a78bfa" stroke-width="1.2" />
-                            <path d="M19.5 18H22.5M21 16.5V19.5" stroke="#a78bfa" stroke-width="1"
-                                stroke-linecap="square" />
+                            <path d="M19.5 18H22.5M21 16.5V19.5" stroke="#a78bfa" stroke-width="1" stroke-linecap="square" />
                         </svg>
                     </div>
                     <div class="docs-card__label">Source code viewer</div>
@@ -860,10 +834,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                             <rect x="2" y="2" width="24" height="24" stroke="#a78bfa" stroke-width="1.3" />
                             <path d="M7 8H21" stroke="#a78bfa" stroke-width="1" opacity=".4" />
-                            <rect x="6" y="11" width="16" height="3" fill="rgba(255,51,102,.15)" stroke="#ff3366"
-                                stroke-width=".8" />
-                            <path d="M7 18H21M7 22H15" stroke="#a78bfa" stroke-width="1" stroke-linecap="square"
-                                opacity=".5" />
+                            <rect x="6" y="11" width="16" height="3" fill="rgba(255,51,102,.15)" stroke="#ff3366" stroke-width=".8" />
+                            <path d="M7 18H21M7 22H15" stroke="#a78bfa" stroke-width="1" stroke-linecap="square" opacity=".5" />
                         </svg>
                     </div>
                     <div class="docs-card__label">Analysis results</div>
@@ -882,10 +854,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                 <div class="docs-card">
                     <div class="docs-card__icon">
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                            <path d="M14 2L2 7V14C2 20.627 7.373 26 14 26C20.627 26 26 20.627 26 14V7L14 2Z"
-                                stroke="#ff3366" stroke-width="1.3" fill="none" />
-                            <path d="M9 14L12.5 17.5L19 11" stroke="#ff3366" stroke-width="1.4"
-                                stroke-linecap="square" />
+                            <path d="M14 2L2 7V14C2 20.627 7.373 26 14 26C20.627 26 26 20.627 26 14V7L14 2Z" stroke="#ff3366" stroke-width="1.3" fill="none" />
+                            <path d="M9 14L12.5 17.5L19 11" stroke="#ff3366" stroke-width="1.4" stroke-linecap="square" />
                         </svg>
                     </div>
                     <div class="docs-card__label" data-i18n="docs.c3_lbl">Вкладка — Threat Details</div>
@@ -921,10 +891,8 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="docs-card__icon">
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                             <rect x="3" y="3" width="22" height="22" stroke="#00ff88" stroke-width="1.3" />
-                            <path d="M8 10H12M8 14H12M8 18H12" stroke="#ff3366" stroke-width="1.3"
-                                stroke-linecap="square" />
-                            <path d="M15 10H20M15 14H20M15 18H18" stroke="#00ff88" stroke-width="1"
-                                stroke-linecap="square" opacity=".5" />
+                            <path d="M8 10H12M8 14H12M8 18H12" stroke="#ff3366" stroke-width="1.3" stroke-linecap="square" />
+                            <path d="M15 10H20M15 14H20M15 18H18" stroke="#00ff88" stroke-width="1" stroke-linecap="square" opacity=".5" />
                         </svg>
                     </div>
                     <div class="docs-card__label" data-i18n="docs.c3_lbl">Вкладка — Threat Details</div>
@@ -1006,8 +974,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="docs-card__icon">
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                             <rect x="2" y="2" width="24" height="24" stroke="#a78bfa" stroke-width="1.3" />
-                            <path d="M5 18L9 12L13 15L17 8L23 18" stroke="#a78bfa" stroke-width="1.3"
-                                stroke-linecap="square" />
+                            <path d="M5 18L9 12L13 15L17 8L23 18" stroke="#a78bfa" stroke-width="1.3" stroke-linecap="square" />
                         </svg>
                     </div>
                     <div class="docs-card__label" data-i18n="docs.c6_lbl">Боковая панель</div>
@@ -1040,8 +1007,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4"
-                                    stroke-linecap="square" />
+                                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" />
                             </svg>
                             <span data-i18n="docs.faq1_q">Безопасно ли передавать мой код в программу?</span>
                         </button>
@@ -1050,20 +1016,18 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4"
-                                    stroke-linecap="square" />
+                                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" />
                             </svg>
                             <span data-i18n-html="docs.faq2_q">Почему у безопасного кода с <code>fetch()</code> балл не нулевой?</span>
                         </button>
                         <div class="faq-item__a" data-i18n-html="docs.faq2_a">Нейросеть оценивает вероятность угрозы статистически. Наличие
-                            <code>fetch()</code>, <code>XMLHttpRequest</code> или <code>localStorage</code> само по себе не является угрозой — но поднимает базовый скор. Итоговая классификация учитывает комбинацию признаков: единичный <code>fetch()</code>                            без опасного контекста даёт уровень SAFE или LOW.
+                            <code>fetch()</code>, <code>XMLHttpRequest</code> или <code>localStorage</code> само по себе не является угрозой — но поднимает базовый скор. Итоговая классификация учитывает комбинацию признаков: единичный <code>fetch()</code> без опасного контекста даёт уровень SAFE или LOW.
                         </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4"
-                                    stroke-linecap="square" />
+                                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" />
                             </svg>
                             <span data-i18n="docs.faq3_q">Что значит «Обфускация», если код написан вручную?</span>
                         </button>
@@ -1073,8 +1037,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4"
-                                    stroke-linecap="square" />
+                                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" />
                             </svg>
                             <span data-i18n="docs.faq4_q">Что содержит HTML-отчёт?</span>
                         </button>
@@ -1084,8 +1047,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                     <div class="faq-item">
                         <button class="faq-item__q" aria-expanded="false">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4"
-                                    stroke-linecap="square" />
+                                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" />
                             </svg>
                             <span data-i18n="docs.faq5_q">Можно ли анализировать минифицированные файлы?</span>
                         </button>
@@ -1112,24 +1074,21 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                 <div class="cta-inner__actions">
                     <a href="./download" class="btn btn--primary btn--lg">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                            <path d="M9 2V12M9 12L5 8M9 12L13 8" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="square" />
+                            <path d="M9 2V12M9 12L5 8M9 12L13 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
                             <path d="M3 15H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
                         </svg> <span data-i18n="cta.btn_primary">Скачать JSTD.AI</span>
                     </a>
                     <a href="#docs" class="btn btn--ghost btn--lg">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                             <path d="M3 3H15V15H3V3Z" stroke="currentColor" stroke-width="1.5" />
-                            <path d="M7 7H11M7 10H11" stroke="currentColor" stroke-width="1.3"
-                                stroke-linecap="square" />
+                            <path d="M7 7H11M7 10H11" stroke="currentColor" stroke-width="1.3" stroke-linecap="square" />
                         </svg> <span data-i18n="cta.btn_ghost">Документация</span>
                     </a>
                 </div>
                 <div class="cta-inner__specs">
                     <div class="spec">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M8 1L1 4.5V9C1 12.314 4.134 15 8 15C11.866 15 15 12.314 15 9V4.5L8 1Z"
-                                stroke="#00ff88" stroke-width="1.2" />
+                            <path d="M8 1L1 4.5V9C1 12.314 4.134 15 8 15C11.866 15 15 12.314 15 9V4.5L8 1Z" stroke="#00ff88" stroke-width="1.2" />
                         </svg> Windows 7+
                     </div>
                     <div class="spec">
@@ -1161,12 +1120,9 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                 <div class="footer__brand">
                     <a href="#" class="nav__logo">
                         <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-                            <path d="M16 2L4 7.5V16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16V7.5L16 2Z"
-                                stroke="#00d4ff" stroke-width="1.5" fill="none" />
-                            <path d="M16 7L9 10.25V16C9 19.866 12.134 23 16 23C19.866 23 23 19.866 23 16V10.25L16 7Z"
-                                fill="#00d4ff" fill-opacity="0.12" stroke="#00d4ff" stroke-width="1" />
-                            <path d="M13 16L15.5 18.5L20 13" stroke="#00d4ff" stroke-width="1.5"
-                                stroke-linecap="square" />
+                            <path d="M16 2L4 7.5V16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16V7.5L16 2Z" stroke="#00d4ff" stroke-width="1.5" fill="none" />
+                            <path d="M16 7L9 10.25V16C9 19.866 12.134 23 16 23C19.866 23 23 19.866 23 16V10.25L16 7Z" fill="#00d4ff" fill-opacity="0.12" stroke="#00d4ff" stroke-width="1" />
+                            <path d="M13 16L15.5 18.5L20 13" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="square" />
                         </svg>
                         <span class="nav__logo-text">JSTD<span class="brand-accent">.AI</span></span>
                     </a>
@@ -1178,22 +1134,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                         <div class="footer__col-title" data-i18n="footer.col1_title">Продукт</div>
                         <a href="#cta" data-i18n="footer.col1_1">Скачать</a>
                         <a href="#docs" data-i18n="footer.col1_2">Документация</a>
-                        <a href="#">Changelog</a>
-                        <a href="#" data-i18n="footer.col1_4">Лицензия</a>
-                    </div>
-                    <div class="footer__col">
-                        <div class="footer__col-title" data-i18n="footer.col2_title">Компания</div>
-                        <a href="#" data-i18n="footer.col2_1">О нас</a>
-                        <a href="#" data-i18n="footer.col2_2">Блог</a>
-                        <a href="#" data-i18n="footer.col2_3">Пресса</a>
-                        <a href="#" data-i18n="footer.col2_4">Контакты</a>
-                    </div>
-                    <div class="footer__col">
-                        <div class="footer__col-title" data-i18n="footer.col3_title">Безопасность</div>
-                        <a href="#" data-i18n="footer.col3_1">Ответственное раскрытие</a>
-                        <a href="#" data-i18n="footer.col3_2">Политика приватности</a>
-                        <a href="#">OSINT</a>
-                        <a href="#" data-i18n="footer.col3_4">CVE-база</a>
+                        <a href="#testimonials" data-i18n="nav.testimonials">Отзывы</a>
                     </div>
                 </div>
             </div>
@@ -1202,8 +1143,7 @@ f.src = <span class="c-str">'https://phishing.site'</span>;
                 <div class="footer__badges">
                     <span class="footer__badge">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                            <path d="M6 1L1 3.5V6C1 8.761 3.239 11 6 11C8.761 11 11 8.761 11 6V3.5L6 1Z"
-                                stroke="#00ff88" stroke-width="1" />
+                            <path d="M6 1L1 3.5V6C1 8.761 3.239 11 6 11C8.761 11 11 8.761 11 6V3.5L6 1Z" stroke="#00ff88" stroke-width="1" />
                         </svg>
                         Offline-first
                     </span>

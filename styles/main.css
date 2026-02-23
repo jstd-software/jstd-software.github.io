@@ -663,20 +663,12 @@ html.lang-loading {
     transform: translateX(-50%);
     color: var(--text-3);
     grid-column: 1 / -1;
+    animation: arrowBounce 1.8s ease-in-out infinite;
 }
 
-.scroll-dot {
-    animation: scrollBounce 2s ease-in-out infinite;
-}
-
-@keyframes scrollBounce {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(10px);
-    }
+@keyframes arrowBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0);   opacity: .45; }
+    50%       { transform: translateX(-50%) translateY(6px); opacity: 1;   }
 }
 
 
@@ -721,6 +713,8 @@ html.lang-loading {
         transform: translateX(-50%);
     }
 }
+
+
 
 
 /* ── SECTIONS ────────────────────────────────── */
